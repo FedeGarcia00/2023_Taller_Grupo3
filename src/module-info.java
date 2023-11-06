@@ -7,4 +7,5 @@
  */
 module TPFinalTaller2023 {
 	requires junit;
+	requires LinkeFi.v2;
 }
