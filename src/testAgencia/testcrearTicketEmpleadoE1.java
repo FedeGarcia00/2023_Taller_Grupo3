@@ -46,6 +46,11 @@ public class testcrearTicketEmpleadoE1 {
 	public void test1() {
 		// se agrega otro ticket al empleado
 		try {
+			agencia.login("baucho", "123");
+		} catch (ContraException | NombreUsuarioException e) {
+			e.printStackTrace();
+		}
+		try {
 			 // error aca!!!! menda null como cliente
 			 System.out.println(empleado.getTicket().toString());
 			 System.out.println(empleado.toString());
@@ -61,6 +66,7 @@ public class testcrearTicketEmpleadoE1 {
 	@Test
 	public void test2() {
 		// se agrega otro ticket al empleado
+		
 		try {
 			 // error aca!!!! menda null como cliente
 			 System.out.println(empleado.getTicket().toString());
