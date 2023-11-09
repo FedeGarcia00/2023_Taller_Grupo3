@@ -51,6 +51,9 @@
     </object>
    </void>
   </void>
+  <void property="estadoContratacion">
+   <boolean>true</boolean>
+  </void>
   <void property="limiteSuperior">
    <int>6000</int>
   </void>
