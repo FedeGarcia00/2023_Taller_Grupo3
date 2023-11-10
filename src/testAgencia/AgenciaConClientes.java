@@ -28,8 +28,8 @@ public class AgenciaConClientes {
   public void setUp() throws Exception {
     //Preparación del escenario, ya existen empleados en el sistema
     agencia = Agencia.getInstance();
-    HashMap<String, EmpleadoPretenso> empleados = new HashMap<>();
-    HashMap<String, Empleador> empleadores = new HashMap<>();
+    HashMap<String, EmpleadoPretenso> empleados = new HashMap<String, EmpleadoPretenso>();
+    HashMap<String, Empleador> empleadores = new HashMap<String, Empleador>();
     agencia.setEmpleados(empleados);
     agencia.setEmpleadores(empleadores);
     agencia.registroEmpleador(
