@@ -53,7 +53,7 @@ public class testAdminPanel {
 
 	@Test
 	public void testModificarLimitesCompletoCorrecto() {
-		 robot.delay(TestUtils.getDelay());
+		robot.delay(TestUtils.getDelay());
 		JTextField textoInferior = (JTextField) TestUtils.getComponentForName(ventana, Constantes.TEXTO_INFERIOR);
 		JTextField textoSuperior = (JTextField) TestUtils.getComponentForName(ventana, Constantes.TEXTO_SUPERIOR);
 		JButton modificarValores = (JButton) TestUtils.getComponentForName(ventana, Constantes.MODIFICAR_VALORES);
@@ -61,6 +61,7 @@ public class testAdminPanel {
 		TestUtils.tipeaTexto("10", robot);	
 		TestUtils.clickComponent(textoSuperior, robot);
 		TestUtils.tipeaTexto("100", robot);	
+		robot.delay(TestUtils.getDelay());
 		Assert.assertTrue("El boton modificar valores deberia estar habilitado",modificarValores.isEnabled());
 	}
 	
@@ -99,7 +100,7 @@ public class testAdminPanel {
 	
 	@Test
 	public void testModificarLimitesSuperiorMenorInferior() {
-		 robot.delay(TestUtils.getDelay());
+		robot.delay(TestUtils.getDelay());
 		JTextField textoInferior = (JTextField) TestUtils.getComponentForName(ventana, Constantes.TEXTO_INFERIOR);
 		JTextField textoSuperior = (JTextField) TestUtils.getComponentForName(ventana, Constantes.TEXTO_SUPERIOR);
 		JButton modificarValores = (JButton) TestUtils.getComponentForName(ventana, Constantes.MODIFICAR_VALORES);
