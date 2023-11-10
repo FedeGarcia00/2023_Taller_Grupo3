@@ -2,19 +2,39 @@ package testGUI;
 
 import static org.junit.Assert.*;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import controlador.Controlador;
+import vista.Ventana;
+
 public class testAdminPanel {
 
+	Controlador controlador;
+	Robot robot; 
+	
+	public testAdminPanel() {
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Before
 	public void setUp() throws Exception {
-		 //VER COMO OBTENER LA VISTA DEL ADMIN SIN INICIAR SESION
+		  controlador = new Controlador();
+		  
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		 Ventana ventanaActual = (Ventana) controlador.getVista();
+		 ventanaActual.setVisible(false);
 	}
 
 	@Test
@@ -42,5 +62,4 @@ public class testAdminPanel {
 	public void testModificarLimitesSuperiorMenorInferior() {
 		fail("Not yet implemented");
 	}
-
 }
