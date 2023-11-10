@@ -79,7 +79,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -102,7 +102,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -125,7 +125,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -149,7 +149,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -172,7 +172,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -195,7 +195,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -217,7 +217,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -239,7 +239,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -262,7 +262,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -285,7 +285,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -307,7 +307,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -329,7 +329,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -352,7 +352,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -375,7 +375,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
@@ -398,7 +398,7 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			e.printStackTrace();
+			Assert.fail("No deberia entrar aqui");
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
