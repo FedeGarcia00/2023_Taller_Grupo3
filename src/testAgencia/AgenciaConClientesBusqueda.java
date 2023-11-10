@@ -147,7 +147,7 @@ public class AgenciaConClientesBusqueda {
 
   @Test
   public void testcrearTicketEmpleado2() {
-    //NO ANDA, TIRA UN NULL POINTER EXCEPTION, (REVISAR PQ AHORA ANDA Y NO TOQUE NADA XD)
+    //ANDA...
     try {
       agencia.crearTicketEmpleado(
         Constantes.PRESENCIAL,
@@ -248,7 +248,7 @@ public class AgenciaConClientesBusqueda {
 
   @Test
   public void testcrearTicketEmpleador2() {
-    //NO ANDA, TIRA UN NULL POINTER EXCEPTION (REVISAR PQ AHORA ANDA Y NO TOQUE NADA XD)
+    //ANDA...
     try {
       agencia.crearTicketEmpleado(
         Constantes.PRESENCIAL,

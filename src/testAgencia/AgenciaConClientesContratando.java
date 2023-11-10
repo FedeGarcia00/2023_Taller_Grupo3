@@ -67,10 +67,6 @@ public class AgenciaConClientesContratando {
         "22321",
         23
       );
-    // Se le crea un ticket al empleado 2
-    //agencia.crearTicketEmpleado(Constantes.HOME_OFFICE, 50000, Constantes.JORNADA_MEDIA, Constantes.JUNIOR, Constantes.EXP_MEDIA, Constantes.TERCIARIOS, empleado2);
-    // Se le crea un ticket al empleador 2
-    //agencia.crearTicketEmpleador(Constantes.HOME_OFFICE, 50000, Constantes.JORNADA_MEDIA, Constantes.JUNIOR, Constantes.EXP_MEDIA, Constantes.TERCIARIOS, empleador2);
   }
 
   @After

@@ -55,7 +55,6 @@ public class AgenciaSinClientes {
       agencia.login("admin", "123");
       Assert.fail("Deberia haber lanzado excepcion ContraException");
     } catch (ContraException e) {
-      System.out.println(e.getMessage());
       // deberia entrar aqui
     } catch (NombreUsuarioException e) {
       Assert.fail("Deberia haber lanzado excepcion ContraException");
