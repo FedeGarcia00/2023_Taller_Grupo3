@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import controlador.Controlador;
 import util.Constantes;
+import vista.PanelRegistro;
 import vista.Ventana;
 
 public class testRegistroPanel {
@@ -40,8 +41,10 @@ public class testRegistroPanel {
 		  robot.delay(TestUtils.getDelay());
 		  controlador = new Controlador();
 		  ventana = (Ventana) controlador.getVista();
-		  JButton registrar = (JButton) TestUtils.getComponentForName(ventana, Constantes.REGISTRAR);
-		  TestUtils.clickComponent(registrar, robot);
+		  PanelRegistro panelRegistro = new PanelRegistro(controlador);
+		  ventana.setContentPane(panelRegistro);
+//		  JButton registrar = (JButton) TestUtils.getComponentForName(ventana, Constantes.REGISTRAR);
+//		  TestUtils.clickComponent(registrar, robot);
 	}
 
 	@After
@@ -93,6 +96,7 @@ public class testRegistroPanel {
 	
 	@Test
 	public void testRegEmpleadorTodoLleno() {
+		
 		JRadioButton empleador = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EMPLEADOR);	
 		TestUtils.clickComponent(empleador, robot); 
 		JTextField user = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_USSER_NAME);
@@ -100,7 +104,8 @@ public class testRegistroPanel {
 		JTextField passwordConf = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_CONFIRM_PASSWORD);
 		JTextField realname = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_REAL_NAME);
 		JTextField phone = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_TELEFONO);
-		JButton registrarAccion = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_REGISTRAR);		
+		JButton registrarAccion = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_REGISTRAR);
+		System.out.println(registrarAccion.isEnabled());
 		TestUtils.clickComponent(user, robot);
 		TestUtils.tipeaTexto("manu", robot);
 		TestUtils.clickComponent(password, robot);
@@ -112,6 +117,7 @@ public class testRegistroPanel {
 		TestUtils.clickComponent(phone, robot);
 		TestUtils.tipeaTexto("5422354", robot);
 		TestUtils.clickComponent(empleador, robot);
+		System.out.println(registrarAccion.isEnabled());
 		Assert.assertTrue("Boton de registrar deberia estar habilitado.", registrarAccion.isEnabled());
 	}
 	
