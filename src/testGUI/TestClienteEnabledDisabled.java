@@ -26,7 +26,7 @@ import vista.IVista;
 import vista.PanelAdmin;
 import vista.PanelCliente;
 
-public class testClientePanel {
+public class TestClienteEnabledDisabled {
 	
 	Controlador controlador;
 	Robot robot; 
@@ -35,7 +35,7 @@ public class testClientePanel {
 	
 	
 	
-	public testClientePanel() {
+	public TestClienteEnabledDisabled() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {

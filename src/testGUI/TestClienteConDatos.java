@@ -32,7 +32,7 @@ import vista.PanelCliente;
 import vista.PanelRegistro;
 import vista.Ventana;
 
-public class testClienteConDatos {
+public class TestClienteConDatos {
 	
 	Controlador controlador;
 	Robot robot; 
@@ -41,7 +41,7 @@ public class testClienteConDatos {
 	Ventana ventana;
 	Empleador empleador;
 	
-	public testClienteConDatos() {
+	public TestClienteConDatos() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {

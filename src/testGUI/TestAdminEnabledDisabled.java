@@ -22,13 +22,13 @@ import vista.PanelAdmin;
 import vista.PanelRegistro;
 import vista.Ventana;
 
-public class testAdminPanel {
+public class TestAdminEnabledDisabled {
 
 	Controlador controlador;
 	Robot robot; 
 	Ventana ventana;
 	
-	public testAdminPanel() {
+	public TestAdminEnabledDisabled() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {

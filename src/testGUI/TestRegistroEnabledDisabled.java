@@ -19,7 +19,7 @@ import util.Constantes;
 import vista.PanelRegistro;
 import vista.Ventana;
 
-public class testRegistroPanel {
+public class TestRegistroEnabledDisabled {
 	
 	Controlador controlador;
 	Robot robot; 
@@ -28,7 +28,7 @@ public class testRegistroPanel {
 	
 	// constructor para alltest
 	
-	public testRegistroPanel() {
+	public TestRegistroEnabledDisabled() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {

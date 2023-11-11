@@ -23,7 +23,7 @@ import util.Constantes;
 import util.Mensajes;
 import vista.Ventana;
 
-public class testLoginConDatos {
+public class TestLoginConDatos {
 	
 	Controlador controlador;
 	Robot robot; 
@@ -34,7 +34,7 @@ public class testLoginConDatos {
 	
 	// constructor para alltest
 	
-	public testLoginConDatos() {
+	public TestLoginConDatos() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {

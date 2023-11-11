@@ -24,7 +24,7 @@ import util.Mensajes;
 import vista.PanelRegistro;
 import vista.Ventana;
 
-public class testRegisterConDatos {
+public class TestRegisterConDatos {
 	
 	Controlador controlador;
 	Robot robot; 
@@ -36,7 +36,7 @@ public class testRegisterConDatos {
 	
 	// constructor para alltest
 	
-	public testRegisterConDatos() {
+	public TestRegisterConDatos() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {

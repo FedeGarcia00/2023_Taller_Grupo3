@@ -18,7 +18,7 @@ import controlador.Controlador;
 import util.Constantes;
 import vista.Ventana;
 
-public class testLoginPanel {
+public class TestLoginEnabledDisabled {
 	
 	Controlador controlador;
 	Robot robot; 
@@ -27,7 +27,7 @@ public class testLoginPanel {
 	
 	// constructor para alltest
 	
-	public testLoginPanel() {
+	public TestLoginEnabledDisabled() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {

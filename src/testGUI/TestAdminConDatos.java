@@ -22,7 +22,7 @@ import util.Constantes;
 import util.Mensajes;
 import vista.Ventana;
 
-public class testAdminConDatos {
+public class TestAdminConDatos {
 	
 	Controlador controlador;
 	Robot robot; 
@@ -31,7 +31,7 @@ public class testAdminConDatos {
 	Ventana ventana;
 	EmpleadoPretenso empleado;
 	
-	public testAdminConDatos() {
+	public TestAdminConDatos() {
 		try {
 			robot = new Robot();
 		} catch (AWTException e) {
