@@ -26,6 +26,7 @@ public class Ticket1 {
 	public void setUp() throws Exception {
 		agencia = Agencia.getInstance();
 	    agencia.setEstadoContratacion(false);
+		agencia.setLimitesRemuneracion(1000, 1500);
 	    HashMap<String, EmpleadoPretenso> empleados = new HashMap<>();
 	    HashMap<String, Empleador> empleadores = new HashMap<>();
 	    agencia.setEmpleados(empleados);
@@ -41,7 +42,7 @@ public class Ticket1 {
 	    	      );
 	    agencia.crearTicketEmpleador(
 	    	      Constantes.HOME_OFFICE,
-	    	      50000, // ver remuneracion
+	    	      500,
 	    	      Constantes.JORNADA_MEDIA,
 	    	      Constantes.JUNIOR,
 	    	      Constantes.EXP_NADA,
@@ -404,6 +405,75 @@ public class Ticket1 {
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionPuesto(otro);
 	    Assert.assertEquals("El resultado deberia ser -1",resultado, -1, 0.1);	
+	}
+	
+	@Test
+	public void testgetComparacionRemuneracion1() {
+	    // Se le crea un ticket al empleado 1
+	    try {
+			agencia.crearTicketEmpleado(
+			  Constantes.INDISTINTO,
+			  500,
+			  Constantes.JORNADA_EXTENDIDA,
+			  Constantes.JUNIOR,
+			  Constantes.EXP_MUCHA,
+			  Constantes.TERCIARIOS,
+			  empleado1
+			);
+		} catch (ImposibleModificarTicketsException e) {
+			// ya fue testeado, no deberia lanzar excep aqui
+			Assert.fail("No deberia entrar aqui");
+		}
+	    Ticket ticket = empleador1.getTicket();
+	    Ticket otro = empleado1.getTicket();
+	    double resultado = ticket.getComparacionRemuneracion(otro);
+	    Assert.assertEquals("El resultado deberia ser 1",1, resultado, 0.1);	
+	}
+	
+	@Test
+	public void testgetComparacionRemuneracion2() {
+	    // Se le crea un ticket al empleado 1
+	    try {
+			agencia.crearTicketEmpleado(
+			  Constantes.INDISTINTO,
+			  1250,
+			  Constantes.JORNADA_EXTENDIDA,
+			  Constantes.JUNIOR,
+			  Constantes.EXP_MUCHA,
+			  Constantes.TERCIARIOS,
+			  empleado1
+			);
+		} catch (ImposibleModificarTicketsException e) {
+			// ya fue testeado, no deberia lanzar excep aqui
+			Assert.fail("No deberia entrar aqui");
+		}
+	    Ticket ticket = empleador1.getTicket();
+	    Ticket otro = empleado1.getTicket();
+	    double resultado = ticket.getComparacionRemuneracion(otro);
+	    Assert.assertEquals("El resultado deberia ser -0.5",-0.5, resultado, 0.1);	
+	}
+	
+	@Test
+	public void testgetComparacionRemuneracion3() {
+	    // Se le crea un ticket al empleado 1
+	    try {
+			agencia.crearTicketEmpleado(
+			  Constantes.INDISTINTO,
+			  1750,
+			  Constantes.JORNADA_EXTENDIDA,
+			  Constantes.JUNIOR,
+			  Constantes.EXP_MUCHA,
+			  Constantes.TERCIARIOS,
+			  empleado1
+			);
+		} catch (ImposibleModificarTicketsException e) {
+			// ya fue testeado, no deberia lanzar excep aqui
+			Assert.fail("No deberia entrar aqui");
+		}
+	    Ticket ticket = empleador1.getTicket();
+	    Ticket otro = empleado1.getTicket();
+	    double resultado = ticket.getComparacionRemuneracion(otro);
+	    Assert.assertEquals("El resultado deberia ser -1",-1, resultado, 0.1);	
 	}
 
 }

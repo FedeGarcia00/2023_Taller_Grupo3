@@ -25,6 +25,32 @@
      </void>
     </object>
    </void>
+   <void method="put">
+    <string>fede</string>
+    <object class="modeloDatos.Empleador">
+     <void property="password">
+      <string>123</string>
+     </void>
+     <void property="puntaje">
+      <int>-1</int>
+     </void>
+     <void property="realName">
+      <string>1233</string>
+     </void>
+     <void property="rubro">
+      <string>FISICA</string>
+     </void>
+     <void property="telefono">
+      <string>feder</string>
+     </void>
+     <void property="tipoPersona">
+      <string>SALUD</string>
+     </void>
+     <void property="usserName">
+      <string>fede</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="empleados">
    <void method="put">

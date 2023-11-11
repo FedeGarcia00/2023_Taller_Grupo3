@@ -18,7 +18,7 @@ import persistencia.PersistenciaXML;
 import util.Constantes;
 import util.Mensajes;
 
-public class testPersistenciaCarga {
+public class testPersistencia {
 
 	  Agencia agencia;
 	  EmpleadoPretenso empleado1;
@@ -31,7 +31,6 @@ public class testPersistenciaCarga {
 
 	@Before
 	public void setUp() throws Exception {
-	   
 	    
 		agencia = Agencia.getInstance();
 		persistencia = new  PersistenciaXML();

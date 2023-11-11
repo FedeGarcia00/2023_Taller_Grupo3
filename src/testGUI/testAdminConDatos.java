@@ -1,6 +1,5 @@
 package testGUI;
 
-import static org.junit.Assert.*;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -12,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 
 import controlador.Controlador;
@@ -21,8 +20,6 @@ import modeloDatos.Empleador;
 import modeloNegocio.Agencia;
 import util.Constantes;
 import util.Mensajes;
-import vista.PanelAdmin;
-import vista.PanelRegistro;
 import vista.Ventana;
 
 public class testAdminConDatos {
@@ -32,6 +29,7 @@ public class testAdminConDatos {
 	FalsoOptionPane op = new FalsoOptionPane();
 	Agencia agencia;
 	Ventana ventana;
+	EmpleadoPretenso empleado;
 	
 	public testAdminConDatos() {
 		try {
@@ -44,24 +42,11 @@ public class testAdminConDatos {
 	@Before
 	public void setUp() throws Exception {
 		
-//		 robot.delay(TestUtils.getDelay());
-//		  controlador = new Controlador();
-//		  ventana = (Ventana) controlador.getVista();
-//		  PanelRegistro panelRegistro = new PanelRegistro(controlador);
-//		  ventana.setContentPane(panelRegistro);
-		
 		
 		  robot.delay(TestUtils.getDelay());
-		  
 		  controlador = new Controlador();
-		  
 		  ventana = (Ventana) controlador.getVista();
-		  
-//		  esto no me anda, seria la forma correcta de hacerlo, lo fuerzo iniciando sesion
-//		  ventana = (Ventana) controlador.getVista();
-//		  PanelAdmin panelAdmin = new PanelAdmin(controlador);
-//		  ventana.setContentPane(panelAdmin);
-		  
+  
 		  //fuerzo ir a la ventana de admin
 		  JTextField username = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
 		  JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
@@ -76,14 +61,13 @@ public class testAdminConDatos {
 	      TestUtils.clickComponent(login, robot);
 		  controlador.setMyOptionPane(op);
 		
-		
 		  agencia = Agencia.getInstance();  
 		  HashMap<String, EmpleadoPretenso> empleados = new HashMap<String, EmpleadoPretenso>();
 		  HashMap<String, Empleador> empleadores = new HashMap<String, Empleador>();
 		  agencia.setEmpleados(empleados);
 		  agencia.setEmpleadores(empleadores);
 		  agencia.registroEmpleador("santi","456","Santiago","43234",Constantes.JURIDICA,Constantes.SALUD);
-		  agencia.registroEmpleado("fede","123","Federico","Garcia","223543",23);
+		  empleado = (EmpleadoPretenso) agencia.registroEmpleado("fede","123","Federico","Garcia","223543",23);
 
 	}
 
@@ -93,17 +77,6 @@ public class testAdminConDatos {
 		 ventana.setVisible(false);
 	}
 
-	
-//	Al pulsar el botón GATILLAR se invoca al método gatillar de la clase Controlador.
-//	Al pulsar el botón APLICAR_PROMO se invoca al método aplicarPromo de la clase Controlador.
-//	Al pulsar el botón CERRARSESION se invoca al método cerrarSesion de la clase Controlador y se regresa al panel de login
-	
-	
-	//gatillar 1, con estado contratacion false
-	//gatillar 2, con estado contratacion true, 
-	//aplicar promo no se como
-	//cerrar sesion
-	
 	
 	@Test
 	public void testGatillar1() {
@@ -121,19 +94,34 @@ public class testAdminConDatos {
 		JButton gatillar = (JButton) TestUtils.getComponentForName(ventana, Constantes.GATILLAR);
 		TestUtils.clickComponent(gatillar, robot);
 	    Assert.assertEquals("Deberia decir mensaje de agencia en contratacion:", Mensajes.AGENCIA_EN_BUSQUEDA.getValor(), op.getMensaje()); 
-	}   
+	}   	
 	
 	@Test
 	public void testCerrarSesion() {
-	
+		JButton cerrarSesion = (JButton) TestUtils.getComponentForName(ventana, Constantes.CERRARSESION);
+		TestUtils.clickComponent(cerrarSesion, robot);
+		Assert.assertEquals("El tipo de user deberia quedar en -1", -1, agencia.getTipoUsuario()); 
 	}   
 	
 	@Test
-	public void aplicaPromo() {
-	
+	public void aplicaPromo1() {
+		//sin lista postulantes
+		//hay un solo empleado, deberia retornar en una ventana el .toString() de este	   
+		JButton aplicaPromo = (JButton) TestUtils.getComponentForName(ventana, Constantes.APLICAR_PROMO);
+		TestUtils.clickComponent(aplicaPromo, robot);
+		Assert.assertEquals("Deberia mostar un pane con el cliente", empleado.toString(), op.getMensaje()); 
 	}   
-	
-	
+	@Test
+	public void aplicaPromo2() {
+		//con lista postulantes
+		//hay un solo empleado, deberia retornar en una ventana el .toString() de este	   
+		JButton aplicaPromo = (JButton) TestUtils.getComponentForName(ventana, Constantes.APLICAR_PROMO);
+		JCheckBox listaPostulantes = (JCheckBox) TestUtils.getComponentForName(ventana, Constantes.CHECK_BOX_LISTA_POSTULANTES);
+		TestUtils.clickComponent(listaPostulantes, robot);
+		TestUtils.clickComponent(aplicaPromo, robot);
+		Assert.assertEquals("Deberia mostar un pane con el cliente", empleado.toString(), op.getMensaje()); 
+	}   
+
 	}   
 	
 
