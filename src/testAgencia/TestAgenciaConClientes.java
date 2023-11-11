@@ -12,6 +12,8 @@ import modeloDatos.Cliente;
 import modeloDatos.EmpleadoPretenso;
 import modeloDatos.Empleador;
 import modeloNegocio.Agencia;
+import modeloDatos.Contratacion;
+import modeloDatos.Ticket;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,64 +22,32 @@ import util.Constantes;
 
 public class TestAgenciaConClientes {
 
-  Agencia agencia;
-  Cliente empleado1;
-  Cliente empleado2;
+	 Agencia agencia;
+	  Cliente empleador1;
+	  Cliente empleador2;
+	  Cliente empleado1;
+	  Cliente empleado2;
 
-  @Before
-  public void setUp() throws Exception {
-    //Preparación del escenario, ya existen empleados en el sistema
-    agencia = Agencia.getInstance();
-    HashMap<String, EmpleadoPretenso> empleados = new HashMap<String, EmpleadoPretenso>();
-    HashMap<String, Empleador> empleadores = new HashMap<String, Empleador>();
-    agencia.setEmpleados(empleados);
-    agencia.setEmpleadores(empleadores);
-    agencia.registroEmpleador(
-      "santi",
-      "456",
-      "Santiago",
-      "43234",
-      Constantes.JURIDICA,
-      Constantes.SALUD
-    );
-    agencia.registroEmpleador(
-      "pepe",
-      "765",
-      "Pedro",
-      "21334",
-      Constantes.FISICA,
-      Constantes.SALUD
-    );
-    empleado1 =
-      agencia.registroEmpleado(
-        "baucho",
-        "123",
-        "Bautista",
-        "Orte",
-        "223543",
-        23
-      );
-    empleado2 =
-      agencia.registroEmpleado(
-        "fede",
-        "345",
-        "Federico",
-        "Garcia",
-        "22321",
-        23
-      );
+	  @Before
+	  public void setUp() throws Exception {
+	    //Preparación del escenario, ya existen empleados en el sistema
+	    agencia = Agencia.getInstance();
+	    HashMap<String, EmpleadoPretenso> empleados = new HashMap<String, EmpleadoPretenso>();
+	    HashMap<String, Empleador> empleadores = new HashMap<String, Empleador>();
+	    agencia.setEmpleados(empleados);
+	    agencia.setEmpleadores(empleadores);
+	    empleador1 = agencia.registroEmpleador("santi","456","Santiago","43234",Constantes.JURIDICA,Constantes.SALUD);
+	    empleador2 = agencia.registroEmpleador("pepe","765","Pedro","21334",Constantes.FISICA,Constantes.SALUD);
+	    empleado1 = agencia.registroEmpleado("baucho","123","Bautista","Orte","223543",23);
+	    empleado2 = agencia.registroEmpleado("fede","345","Federico","Garcia","22321",23);
 
-    // Se le crea un ticket al empleado 2
-    agencia.crearTicketEmpleado(
-      Constantes.HOME_OFFICE,
-      50000,
-      Constantes.JORNADA_MEDIA,
-      Constantes.JUNIOR,
-      Constantes.EXP_MEDIA,
-      Constantes.TERCIARIOS,
-      empleado2
-    );
-  }
+	    // Se le crea un ticket al empleador 2
+	    agencia.crearTicketEmpleador(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador2);
+
+	    // Se le crea un ticket al empleado 2
+	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado2);
+
+	  }
 
   @After
   public void tearDown() throws Exception {
@@ -544,4 +514,24 @@ public class TestAgenciaConClientes {
       //no deberia lanzar excepcion
     }
   }
+  
+  @Test
+  public void testMatch() {
+      agencia.match((Empleador)empleador2,(EmpleadoPretenso)empleado2);
+      Contratacion contratacion = new Contratacion((Empleador)empleador2,(EmpleadoPretenso)empleado2);
+      //los tickets se deberian eliminar
+      Assert.assertEquals("El ticket deberia haberse eliminado", empleador2.getTicket(), null);
+      Assert.assertEquals("El ticket deberia haberse eliminado", empleado2.getTicket(), null);
+      //asumimos que los puntajes se inician en 0
+      Assert.assertEquals("El puntaje deberia ser 50", empleador2.getPuntaje(), 50);
+      Assert.assertEquals("El puntaje deberia ser 10", empleado2.getPuntaje(), 10);
+
+      Assert.assertEquals("Deberia devolver el empleado contratado",agencia.getContratacionEmpleador((Empleador)empleador2),empleado2);
+      Assert.assertEquals("Deberia devolver el empleador que lo contrato",agencia.getContratacionEmpleadoPretenso((EmpleadoPretenso)empleado2),empleador2);
+
+      Ticket ticketaux = new Ticket(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS);
+      Assert.assertEquals("La remuneracion deberia matchear",empleador2.calculaComision(ticketaux),agencia.getComisionUsuario(empleador2), 0.1);
+      Assert.assertEquals("La remuneracion deberia matchear",empleado2.calculaComision(ticketaux),agencia.getComisionUsuario(empleado2), 0.1);
+  }
 }
+
