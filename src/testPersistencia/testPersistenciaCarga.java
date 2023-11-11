@@ -11,7 +11,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import modeloDatos.Cliente;
 import modeloDatos.EmpleadoPretenso;
 import modeloDatos.Empleador;
 import modeloNegocio.Agencia;
@@ -80,7 +79,6 @@ public class testPersistenciaCarga {
 		} catch (ClassNotFoundException e) {
 			Assert.fail("Deberia lanzar excepcion IOException");
 		} catch (IOException e) {
-			//deberia entrar aqui
 		}
 	}
 	

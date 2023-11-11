@@ -1,65 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="18.0.2" class="java.beans.XMLDecoder">
+<java version="1.8.0_391" class="java.beans.XMLDecoder">
  <object class="persistencia.AgenciaDTO" id="AgenciaDTO0">
-  <void property="empleados">
+  <void property="empleadores">
    <void method="put">
-    <string>baucho</string>
-    <object class="modeloDatos.EmpleadoPretenso">
-     <void property="apellido">
-      <string>4123123</string>
-     </void>
-     <void property="edad">
-      <int>23</int>
-     </void>
+    <string>santi</string>
+    <object class="modeloDatos.Empleador">
      <void property="password">
-      <string>admin</string>
-     </void>
-     <void property="puntaje">
-      <int>-1</int>
+      <string>456</string>
      </void>
      <void property="realName">
-      <string>Bautista</string>
+      <string>asd</string>
+     </void>
+     <void property="rubro">
+      <string>FISICA</string>
      </void>
      <void property="telefono">
-      <string>Orte</string>
+      <string>asd</string>
      </void>
-     <void property="ticket">
-      <object class="modeloDatos.Ticket">
-       <void property="estudios">
-        <string>Primario</string>
-       </void>
-       <void property="experiencia">
-        <string>ExperienciaNada</string>
-       </void>
-       <void property="jornada">
-        <string>CargaMedia</string>
-       </void>
-       <void property="locacion">
-        <string>Presencial</string>
-       </void>
-       <void property="puesto">
-        <string>Junior</string>
-       </void>
-       <void property="remuneracion">
-        <int>20</int>
-       </void>
-      </object>
+     <void property="tipoPersona">
+      <string>SALUD</string>
      </void>
      <void property="usserName">
-      <string>baucho</string>
+      <string>santi</string>
      </void>
     </object>
    </void>
   </void>
-  <void property="estadoContratacion">
-   <boolean>true</boolean>
+  <void property="empleados">
+   <void method="put">
+    <string>asd</string>
+    <object class="modeloDatos.EmpleadoPretenso">
+     <void property="apellido">
+      <string>asd</string>
+     </void>
+     <void property="edad">
+      <int>12</int>
+     </void>
+     <void property="password">
+      <string>123</string>
+     </void>
+     <void property="realName">
+      <string>asd</string>
+     </void>
+     <void property="telefono">
+      <string>asd</string>
+     </void>
+     <void property="usserName">
+      <string>asd</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>santii</string>
+    <object class="modeloDatos.EmpleadoPretenso">
+     <void property="apellido">
+      <string>asd</string>
+     </void>
+     <void property="edad">
+      <int>12</int>
+     </void>
+     <void property="password">
+      <string>456</string>
+     </void>
+     <void property="realName">
+      <string>asd</string>
+     </void>
+     <void property="telefono">
+      <string>asd</string>
+     </void>
+     <void property="usserName">
+      <string>santii</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>asdasdas3das</string>
+    <object class="modeloDatos.EmpleadoPretenso">
+     <void property="apellido">
+      <string>asd</string>
+     </void>
+     <void property="edad">
+      <int>12</int>
+     </void>
+     <void property="password">
+      <string>456423432</string>
+     </void>
+     <void property="realName">
+      <string>asd</string>
+     </void>
+     <void property="telefono">
+      <string>asd</string>
+     </void>
+     <void property="usserName">
+      <string>asdasdas3das</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>santi</string>
+    <object class="modeloDatos.EmpleadoPretenso">
+     <void property="apellido">
+      <string>asd</string>
+     </void>
+     <void property="edad">
+      <int>12</int>
+     </void>
+     <void property="password">
+      <string>456</string>
+     </void>
+     <void property="realName">
+      <string>asd</string>
+     </void>
+     <void property="telefono">
+      <string>asd</string>
+     </void>
+     <void property="usserName">
+      <string>santi</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>asdasdas</string>
+    <object class="modeloDatos.EmpleadoPretenso">
+     <void property="apellido">
+      <string>asd</string>
+     </void>
+     <void property="edad">
+      <int>12</int>
+     </void>
+     <void property="password">
+      <string>456</string>
+     </void>
+     <void property="realName">
+      <string>asd</string>
+     </void>
+     <void property="telefono">
+      <string>asd</string>
+     </void>
+     <void property="usserName">
+      <string>asdasdas</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="limiteSuperior">
-<<<<<<< Updated upstream
    <int>2000</int>
-=======
-   <int>20000</int>
->>>>>>> Stashed changes
   </void>
  </object>
 </java>
