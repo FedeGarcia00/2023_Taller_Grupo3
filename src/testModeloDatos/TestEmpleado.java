@@ -10,6 +10,7 @@ public class TestEmpleado {
 
 	@Before
 	public void setUp() throws Exception {
+		//Empleado empleado = new Empleado();
 	}
 
 	@After
