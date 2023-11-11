@@ -24,7 +24,7 @@ import org.junit.Test;
 import util.Constantes;
 import util.Mensajes;
 
-public class testIntegracion {
+public class TestIntegracion {
 
   Agencia agencia;
   Cliente empleador1;

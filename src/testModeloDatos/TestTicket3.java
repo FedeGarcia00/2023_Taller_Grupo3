@@ -17,7 +17,7 @@ import modeloDatos.Ticket;
 import modeloNegocio.Agencia;
 import util.Constantes;
 
-public class Ticket3 {
+public class TestTicket3 {
 	  Agencia agencia;
 	  Cliente empleado1;
 	  Cliente empleador1;

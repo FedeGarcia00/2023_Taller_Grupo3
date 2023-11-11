@@ -18,7 +18,7 @@ import persistencia.PersistenciaXML;
 import util.Constantes;
 import util.Mensajes;
 
-public class testPersistencia {
+public class TestPersistencia {
 
 	  Agencia agencia;
 	  EmpleadoPretenso empleado1;

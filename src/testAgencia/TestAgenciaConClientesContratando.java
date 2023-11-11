@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import util.Constantes;
 
-public class AgenciaConClientesContratando {
+public class TestAgenciaConClientesContratando {
 
   Agencia agencia;
   Cliente empleado1;

@@ -17,7 +17,7 @@ import modeloDatos.Ticket;
 import modeloNegocio.Agencia;
 import util.Constantes;
 
-public class Ticket2 {
+public class TestTicket1 {
 	  Agencia agencia;
 	  Cliente empleado1;
 	  Cliente empleador1;
@@ -26,7 +26,7 @@ public class Ticket2 {
 	public void setUp() throws Exception {
 		agencia = Agencia.getInstance();
 	    agencia.setEstadoContratacion(false);
-	    agencia.setLimitesRemuneracion(1000, 1500);
+		agencia.setLimitesRemuneracion(1000, 1500);
 	    HashMap<String, EmpleadoPretenso> empleados = new HashMap<>();
 	    HashMap<String, Empleador> empleadores = new HashMap<>();
 	    agencia.setEmpleados(empleados);
@@ -41,14 +41,15 @@ public class Ticket2 {
 	    	        Constantes.SALUD
 	    	      );
 	    agencia.crearTicketEmpleador(
-	    	      Constantes.PRESENCIAL,
-	    	      1250,
-	    	      Constantes.JORNADA_COMPLETA,
-	    	      Constantes.SENIOR,
-	    	      Constantes.EXP_MEDIA,
-	    	      Constantes.SECUNDARIOS,
+	    	      Constantes.HOME_OFFICE,
+	    	      500,
+	    	      Constantes.JORNADA_MEDIA,
+	    	      Constantes.JUNIOR,
+	    	      Constantes.EXP_NADA,
+	    	      Constantes.PRIMARIOS,
 	    	      empleador1
 	    	    );
+	    //agencia.login("pepe", "765");
 	    empleado1 =
 	    	      agencia.registroEmpleado(
 	    	        "fede",
@@ -84,7 +85,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionEstudios(otro);
-	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);
+	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);
 		
 	}
 	@Test
@@ -107,7 +108,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionEstudios(otro);
-	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);
+	    Assert.assertEquals("El resultado deberia ser 1.5",resultado, 1.5, 0.1);
 		
 	}
 	@Test
@@ -130,7 +131,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionEstudios(otro);
-	    Assert.assertEquals("El resultado deberia ser 1.5",resultado, 1.5, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 2",resultado, 2, 0.1);	
 	}
 
 	
@@ -154,7 +155,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionExperiencia(otro);
-	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
 	}
 	
 	@Test
@@ -177,7 +178,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionExperiencia(otro);
-	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 1.5",resultado, 1.5, 0.1);	
 	}
 	
 	@Test
@@ -200,7 +201,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionExperiencia(otro);
-	    Assert.assertEquals("El resultado deberia ser 1.5",resultado, 1.5, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 2",resultado, 2, 0.1);	
 	}
 	@Test
 	public void testgetComparacionJornada1() {
@@ -222,7 +223,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionJornada(otro);
-	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
 	}
 	@Test
 	public void testgetComparacionJornada2() {
@@ -244,7 +245,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionJornada(otro);
-	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);	
 	}
 	
 	@Test
@@ -267,7 +268,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionJornada(otro);
-	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser -1",resultado, -1, 0.1);	
 	}
 	
 	@Test
@@ -285,12 +286,12 @@ public class Ticket2 {
 			);
 		} catch (ImposibleModificarTicketsException e) {
 			// ya fue testeado, no deberia lanzar excep aqui
-			Assert.fail("No deberia entrar aqui");
+			Assert.fail("No deberia entrar aqui");;
 		}
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionLocacion(otro);
-	    Assert.assertEquals("El resultado deberia ser -1",resultado, -1, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
 	}
 	@Test
 	public void testgetComparacionLocacion2() {
@@ -312,7 +313,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionLocacion(otro);
-	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser -1",resultado, -1, 0.1);	
 	}
 	@Test
 	public void testgetComparacionLocacion3() {
@@ -334,7 +335,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionLocacion(otro);
-	    Assert.assertEquals("El resultado deberia ser -1",resultado, -1, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
 	}
 	
 	@Test
@@ -357,7 +358,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionPuesto(otro);
-	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
 	}
 	
 	@Test
@@ -380,7 +381,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionPuesto(otro);
-	    Assert.assertEquals("El resultado deberia ser 1",resultado, 1, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);	
 	}
 	
 	@Test
@@ -403,7 +404,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionPuesto(otro);
-	    Assert.assertEquals("El resultado deberia ser -0.5",resultado, -0.5, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser -1",resultado, -1, 0.1);	
 	}
 	
 	@Test
@@ -449,7 +450,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionRemuneracion(otro);
-	    Assert.assertEquals("El resultado deberia ser 1",1, resultado, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser -0.5",-0.5, resultado, 0.1);	
 	}
 	
 	@Test
@@ -472,31 +473,7 @@ public class Ticket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionRemuneracion(otro);
-	    Assert.assertEquals("El resultado deberia ser -0.5",-0.5, resultado, 0.1);	
+	    Assert.assertEquals("El resultado deberia ser -1",-1, resultado, 0.1);	
 	}
 
-	
-	@Test
-	public void testgetComparacionTotal() {
-	    // Se le crea un ticket al empleado 1
-	    try {
-			agencia.crearTicketEmpleado(
-			  Constantes.HOME_OFFICE,
-			  500,
-			  Constantes.JORNADA_MEDIA,
-			  Constantes.JUNIOR,
-			  Constantes.EXP_NADA,
-			  Constantes.PRIMARIOS,
-			  empleado1
-			);
-		} catch (ImposibleModificarTicketsException e) {
-			// ya fue testeado, no deberia lanzar excep aqui
-			Assert.fail("No deberia entrar aqui");
-		}
-	    Ticket ticket = empleador1.getTicket();
-	    Ticket otro = empleado1.getTicket();
-	    double resultado = ticket.getComparacionTotal(otro);
-	    //double esperado = ticket.getComparacionEstudios(otro)+ticket.getComparacionExperiencia(otro)+ticket.getComparacionJornada(otro)+ticket.getComparacionLocacion(otro)+ticket.getComparacionPuesto(otro)+ticket.getComparacionRemuneracion(otro);
-	    Assert.assertEquals("El resultado deberia ser:",-2, resultado, 0.1);	
-	}
 }

@@ -18,7 +18,7 @@ import modeloDatos.EmpleadoPretenso;
 import modeloDatos.Empleador;
 import util.Constantes;
 
-public class testUtilPromo {
+public class TestUtilPromo {
 
 	HashMap<String, EmpleadoPretenso> empleados;
 	HashMap<String, Empleador> empleadores;

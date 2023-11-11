@@ -1,6 +1,5 @@
 package testGUI;
 
-
 import java.awt.Component;
 
 import vista.IOptionPane;
