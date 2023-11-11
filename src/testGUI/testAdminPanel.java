@@ -111,15 +111,6 @@ public class testAdminPanel {
 		Assert.assertFalse("El boton modificar valores deberia estar deshabilitado", modificarValores.isEnabled());
 	}
 	
-	@Test
-	public void aplicarPromo() {
-		// ver como testear que realmente llama al metodo correspondiente
-	}
-	
-	@Test
-	public void cerrarSesion() {
-		// ver como testear que realmente llama al metodo correspondiente
-	}
 	
 //	@Test
 //	public void componentes() {
