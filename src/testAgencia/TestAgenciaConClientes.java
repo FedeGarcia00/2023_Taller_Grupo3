@@ -519,16 +519,25 @@ public class TestAgenciaConClientes {
   public void testMatch() {
       agencia.match((Empleador)empleador2,(EmpleadoPretenso)empleado2);
       Contratacion contratacion = new Contratacion((Empleador)empleador2,(EmpleadoPretenso)empleado2);
+      
       //los tickets se deberian eliminar
       Assert.assertEquals("El ticket deberia haberse eliminado", empleador2.getTicket(), null);
       Assert.assertEquals("El ticket deberia haberse eliminado", empleado2.getTicket(), null);
+      
       //asumimos que los puntajes se inician en 0
       Assert.assertEquals("El puntaje deberia ser 50", empleador2.getPuntaje(), 50);
       Assert.assertEquals("El puntaje deberia ser 10", empleado2.getPuntaje(), 10);
-
+      
+      //reviso las asignaciones
       Assert.assertEquals("Deberia devolver el empleado contratado",agencia.getContratacionEmpleador((Empleador)empleador2),empleado2);
       Assert.assertEquals("Deberia devolver el empleador que lo contrato",agencia.getContratacionEmpleadoPretenso((EmpleadoPretenso)empleado2),empleador2);
-
+      
+      //reviso los arrays de contrataciones
+      Contratacion contratacion2=agencia.getContrataciones().get(0);
+      Assert.assertEquals("Los datos deberian matchear",contratacion.getEmpleador(),contratacion2.getEmpleador());
+      Assert.assertEquals("Los datos deberian matchear",contratacion.getEmpleado(),contratacion2.getEmpleado());
+      
+      //reviso que las remuneraciones se guardaron bien
       Ticket ticketaux = new Ticket(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS);
       Assert.assertEquals("La remuneracion deberia matchear",empleador2.calculaComision(ticketaux),agencia.getComisionUsuario(empleador2), 0.1);
       Assert.assertEquals("La remuneracion deberia matchear",empleado2.calculaComision(ticketaux),agencia.getComisionUsuario(empleado2), 0.1);
