@@ -52,25 +52,12 @@ public class TestClienteConDatos {
 	@Before
 	public void setUp() throws Exception {
 		
-//		 robot.delay(TestUtils.getDelay());
-//		  controlador = new Controlador();
-//		  ventana = (Ventana) controlador.getVista();
-//		  PanelRegistro panelRegistro = new PanelRegistro(controlador);
-//		  ventana.setContentPane(panelRegistro);
-		
-		
-		  robot.delay(TestUtils.getDelay());
-		  
+
+		  robot.delay(TestUtils.getDelay());  
 		  controlador = new Controlador();
+		  ventana = (Ventana) controlador.getVista(); 
 		  
-		  ventana = (Ventana) controlador.getVista();
-		  
-//		  esto no me anda, seria la forma correcta de hacerlo, lo fuerzo iniciando sesion
-//		  ventana = (Ventana) controlador.getVista();
-//		  PanelAdmin panelAdmin = new PanelAdmin(controlador);
-//		  ventana.setContentPane(panelAdmin);
-		  
-		  //fuerzo ir a la ventana de admin
+		  //fuerzo ir a la ventana de cliente
 		  JTextField username = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
 		  JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
 		  JButton login = (JButton) TestUtils.getComponentForName(ventana, Constantes.LOGIN);
@@ -102,32 +89,6 @@ public class TestClienteConDatos {
 		 ventana.setVisible(false);
 	}
 
-	
-//	Al pulsar el botón GATILLAR se invoca al método gatillar de la clase Controlador.
-//	Al pulsar el botón APLICAR_PROMO se invoca al método aplicarPromo de la clase Controlador.
-//	Al pulsar el botón CERRARSESION se invoca al método cerrarSesion de la clase Controlador y se regresa al panel de login
-	
-	
-	//gatillar 1, con estado contratacion false
-	//gatillar 2, con estado contratacion true, 
-	//aplicar promo no se como
-	//cerrar sesion
-	
-	//El botón SELECCIONAR_CANDIDATO invoca al método seleccionar candidato de la clase Controlador.
-	//public void seleccionarCandidato()
-//	Pre: Hay un Cliente logueado en la agencia.
-//	Al cliente que esta logeado, se le asigna como candidato el valor retornado por el metodo getCandidato del atributo vista.
-//	Si el valor obtenido es diferente de null, se muestra su informacion (metodo toString) en una ventana emergente.
-	
-//	@Test
-//	public void testSeleccionarCandidato1() {
-//	
-//		JButton seleccionarCandidato = (JButton) TestUtils.getComponentForName(ventana, Constantes.SELECCIONAR_CANDIDATO);
-//		TestUtils.clickComponent(seleccionarCandidato, robot);
-//	   
-//		
-//	}      
-	
 	
 	@Test
 	public void testSeleccionarCandidato1() {
@@ -195,40 +156,6 @@ public class TestClienteConDatos {
 		TestUtils.clickComponent(eliminarTicket, robot);
 		Assert.assertEquals("Deberia mostrar mensaje de error",Mensajes.ERROR_AGENCIA_EN_CONTRATACION.getValor() ,op.getMensaje());
 	}
-	
-//	@Test
-//	public void testEliminarTicket3() {
-//		//se quiere eliminar un ticket cuando no hay
-//		agencia.setEstadoContratacion(false);
-//		empleador.setTicket(null);
-//		JButton eliminarTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.ELIMINAR_TICKET);
-//		TestUtils.clickComponent(eliminarTicket, robot);
-//		Assert.assertEquals("Deberia mostrar mensaje de error",Mensajes.SIN_TICKET.getValor() ,op.getMensaje());
-//	}
-
-
-	
-//ejemplo mock andando	
-//	@Test
-//    public void testGetCandidato() {
-//        // Crear el mock de la vista
-//        Ventana vistaMock = mock(Ventana.class);
-//
-//        // Configurar el comportamiento simulado
-//    	EmpleadoPretenso candidato = new EmpleadoPretenso("Lio", "123", "Lionel", "+5492223141", "Messi", 36);
-//        when(vistaMock.getCandidato()).thenReturn(candidato);
-//
-//        // Crear el controlador y establecer la vista simulada
-//        //Controlador controlador = new Controlador();
-//        controlador.setVista(vistaMock);
-//
-//        // Realizar la prueba con el método getCandidato() simulado
-//        Cliente resultado = controlador.getVista().getCandidato();
-//
-//        System.out.println(resultado);
-//        // Verificar el resultado esperado
-//        assertEquals(candidato, resultado);
-//    }
 	
 
 	
