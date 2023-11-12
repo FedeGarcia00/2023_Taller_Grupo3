@@ -338,20 +338,20 @@ public class TestAgenciaConClientesBusqueda {
 	  //testeo que se hayan creado las listas de postulantes
 	  Assert.assertEquals("El usuario tiene q coincidir", "baucho", empleador1.getListaDePostulantes().get(0).getCliente().getUsserName());
 	  Assert.assertEquals("El usuario tiene q coincidir", "fede", empleador1.getListaDePostulantes().get(1).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "fede", empleador2.getListaDePostulantes().get(0).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "baucho", empleador2.getListaDePostulantes().get(1).getCliente().getUsserName());
+	  Assert.assertEquals("El usuario tiene q coincidir", "baucho", empleador2.getListaDePostulantes().get(0).getCliente().getUsserName());
+	  Assert.assertEquals("El usuario tiene q coincidir", "fede", empleador2.getListaDePostulantes().get(1).getCliente().getUsserName());
 	  Assert.assertEquals("El usuario tiene q coincidir", "santi", empleado1.getListaDePostulantes().get(0).getCliente().getUsserName());
 	  Assert.assertEquals("El usuario tiene q coincidir", "pepe", empleado1.getListaDePostulantes().get(1).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "pepe", empleado2.getListaDePostulantes().get(0).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "santi", empleado2.getListaDePostulantes().get(1).getCliente().getUsserName());
-	  
-	  //testeo que se hayan aplicado los puntajes
-	  Assert.assertEquals("El puntaje debe coincidir", 10.0, empleador1.getPuntaje(), 0.0);
-	  Assert.assertEquals("El puntaje debe coincidir", 10.0, empleador2.getPuntaje(), 0.0);
-	  Assert.assertEquals("El puntaje debe coincidir", 0.0, empleado1.getPuntaje(), 0.0);
-	  Assert.assertEquals("El puntaje debe coincidir", 5.0, empleado2.getPuntaje(), 0.0);
+	  Assert.assertEquals("El usuario tiene q coincidir", "santi", empleado2.getListaDePostulantes().get(0).getCliente().getUsserName());
+	  Assert.assertEquals("El usuario tiene q coincidir", "pepe", empleado2.getListaDePostulantes().get(1).getCliente().getUsserName());
 	  
 	  //testeo que el estado de contratacion haya cambiado
 	  Assert.assertEquals("El estado de contratacion deberia ser true", true, agencia.isEstadoContratacion());
+	  
+	  //testeo que se hayan aplicado los puntajes
+	  Assert.assertEquals("El puntaje debe coincidir", 0.0, empleador2.getPuntaje(), 0.0);
+	  Assert.assertEquals("El puntaje debe coincidir", 10.0, empleado1.getPuntaje(), 0.0);
+	  Assert.assertEquals("El puntaje debe coincidir", 5.0, empleado2.getPuntaje(), 0.0);
+	  Assert.assertEquals("El puntaje debe coincidir", -20.0, empleador1.getPuntaje(), 0.0);
   }
 }
