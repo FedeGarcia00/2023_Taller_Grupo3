@@ -36,16 +36,20 @@ public class TestAgenciaConClientes {
 	    HashMap<String, Empleador> empleadores = new HashMap<String, Empleador>();
 	    agencia.setEmpleados(empleados);
 	    agencia.setEmpleadores(empleadores);
+	    
 	    empleador1 = agencia.registroEmpleador("santi","456","Santiago","43234",Constantes.JURIDICA,Constantes.SALUD);
 	    empleador2 = agencia.registroEmpleador("pepe","765","Pedro","21334",Constantes.FISICA,Constantes.SALUD);
+	    
 	    empleado1 = agencia.registroEmpleado("baucho","123","Bautista","Orte","223543",23);
 	    empleado2 = agencia.registroEmpleado("fede","345","Federico","Garcia","22321",23);
 
-	    // Se le crea un ticket al empleador 2
-	    agencia.crearTicketEmpleador(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador2);
+	    // Se le crea un ticket a los empleadores
+	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador1);
+	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.SENIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador2);
 
-	    // Se le crea un ticket al empleado 2
-	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado2);
+	    // Se le crea un ticket a los empleados
+	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado1);
+	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.SENIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado2);
 
 	  }
 
@@ -538,9 +542,29 @@ public class TestAgenciaConClientes {
       Assert.assertEquals("Los datos deberian matchear",contratacionaux.getEmpleado(),contratacionaux2.getEmpleado());
       
       //reviso que las remuneraciones se guardaron bien
-      Ticket ticketaux = new Ticket(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS);
+      Ticket ticketaux = new Ticket(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.SENIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS);
       Assert.assertEquals("La remuneracion deberia matchear",empleador2.calculaComision(ticketaux),agencia.getComisionUsuario(empleador2), 0.1);
       Assert.assertEquals("La remuneracion deberia matchear",empleado2.calculaComision(ticketaux),agencia.getComisionUsuario(empleado2), 0.1);
   }
+  
+  //test de gatiilar ronda con EstadoContratacion true
+  @Test
+  public void testGatillarRondaE1(){
+	  agencia.setEstadoContratacion(true);
+	  agencia.gatillarRonda();
+	  
+	  Assert.assertEquals("El estado de contratacion deberia ser falso", false, agencia.isEstadoContratacion());
+  }
+  
+  //test de gatiilar ronda con EstadoContratacion false
+  @Test
+  public void testGatillarRondaE2(){
+	  agencia.setEstadoContratacion(false);
+	  agencia.gatillarRonda();
+	  
+	  
+	  Assert.assertEquals("El estado de contratacion deberia ser true", true, agencia.isEstadoContratacion());
+  }
+  
 }
 
