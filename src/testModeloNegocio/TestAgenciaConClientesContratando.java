@@ -1,4 +1,4 @@
-package testAgencia;
+package testModeloNegocio;
 
 import excepciones.ContraException;
 import excepciones.ImposibleModificarTicketsException;
