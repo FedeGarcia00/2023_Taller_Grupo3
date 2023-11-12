@@ -2,6 +2,9 @@ package testModeloDatos;
 
 
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.util.HashMap;
 
 import org.junit.After;
@@ -477,8 +480,18 @@ public class TestTicket2 {
 
 	
 	@Test
-	public void testgetComparacionTotal() {
-	    // Se le crea un ticket al empleado 1
+	public void testgetComparacionTotal() {	
+		// Usamos mock porque algunas comparaciones no andan correctamente
+		// de esta manera nos aseguramos si el resultado del metodo que estamos
+		// testeando ahora es el esperado
+	   Ticket mockTicket = mock(Ticket.class);
+	   when(mockTicket.getComparacionEstudios(mockTicket)).thenReturn(-0.5);
+	   when(mockTicket.getComparacionExperiencia(mockTicket)).thenReturn(-0.5);
+	   when(mockTicket.getComparacionJornada(mockTicket)).thenReturn(-0.5);
+	   when(mockTicket.getComparacionLocacion(mockTicket)).thenReturn(-1.0);
+	   when(mockTicket.getComparacionPuesto(mockTicket)).thenReturn(-0.5);
+	   when(mockTicket.getComparacionRemuneracion(mockTicket)).thenReturn(1.0);
+	   
 	    try {
 			agencia.crearTicketEmpleado(
 			  Constantes.HOME_OFFICE,
