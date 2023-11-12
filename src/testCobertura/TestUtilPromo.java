@@ -52,7 +52,7 @@ public class TestUtilPromo {
 		empleadores.put("fede", empleador1);
 		empleadores.put("baucho", empleador2);
 		Cliente resultado = prueba.aplicaPromo(false, empleados, empleadores);
-		Assert.assertEquals("Deberia retornar el primer elemento del hashmap",resultado.getUsserName(), "baucho");
+		Assert.assertEquals("Deberia retornar el de mayor puntuacion",resultado.getUsserName(), "baucho");
 	}
 
 	@Test

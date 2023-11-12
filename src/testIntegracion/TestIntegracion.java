@@ -149,7 +149,7 @@ public class TestIntegracion {
 	}
 	  empleado1.setCandidato(empleador1);
 	  empleador1.setCandidato(empleado1);
-	  //gatillar ronda indirectamente testea el match...
+	  
 	  agencia.gatillarRonda();
 	  agencia.cerrarSesion();
 	

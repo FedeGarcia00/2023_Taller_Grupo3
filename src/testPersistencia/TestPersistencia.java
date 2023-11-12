@@ -49,6 +49,7 @@ public class TestPersistencia {
 	    agencia.setEmpleados(new HashMap<String, EmpleadoPretenso>());
 	    agencia.setEmpleadores(new HashMap<String, Empleador>());
 	    agencia.setLimitesRemuneracion(1600, 2100);
+	    agencia.setEstadoContratacion(false);
 	    
 //		System.out.println(agencia.getEmpleados());
 //		System.out.println(agencia.getEmpleadores());
