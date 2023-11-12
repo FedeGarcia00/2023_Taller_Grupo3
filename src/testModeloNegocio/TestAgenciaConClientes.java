@@ -415,6 +415,25 @@ public class TestAgenciaConClientes {
       // deberia entrar aqui
     }
   }
+  
+  @Test
+  public void testregistroEmpleador9() {
+    try {
+      agencia.registroEmpleador(
+        "pepito",
+        "789",
+        "Jose",
+        "+5492234562170",
+        Constantes.FISICA,
+        "cualquierCosa"
+      );
+      Assert.fail("Deberia haber tirado ImposibleCrearEmpleadorException");
+    } catch (NewRegisterException e) {
+      Assert.fail("Deberia haber tirado ImposibleCrearEmpleadorException");
+    } catch (ImposibleCrearEmpleadorException e) {
+      // deberia entrar aqui
+    }
+  }
 
   @Test
   public void testsetLimitesRemuneracion1() {
