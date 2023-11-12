@@ -154,10 +154,6 @@ public class TestAgenciaConClientesContratando {
 	  agencia.setEstadoContratacion(true);
 	  agencia.gatillarRonda();
 	  
-	  //testeo que el empleador que no contrato a un empleado haya sido penalizado
-	  //NO ANDA, da +20
-	  //Assert.assertEquals("El puntaje deberia ser -20", -20.0, empleador2.getPuntaje(), 0.0);
-	  
 	  //testeo que los matcheos fueron eliminados
 	  Assert.assertNull("No deberia existir lista", empleador1.getListaDePostulantes());
 	  Assert.assertNull("No deberia existir lista", empleador2.getListaDePostulantes());
@@ -166,5 +162,9 @@ public class TestAgenciaConClientesContratando {
 	  
 	  //testeo que el estado de contratacion haya cambiado
 	  Assert.assertEquals("El estado de contratacion deberia ser falso", false, agencia.isEstadoContratacion());
+	  
+	  //testeo que el empleador que no contrato a un empleado haya sido penalizado
+	  //NO ANDA, da +20
+	  Assert.assertEquals("El puntaje deberia ser -20", -20.0, empleador2.getPuntaje(), 0.0);
   }
 }
