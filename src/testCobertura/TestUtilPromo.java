@@ -1,8 +1,5 @@
 package testCobertura;
 
-
-
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -49,13 +46,13 @@ public class TestUtilPromo {
 	@Test
 	public void testC3() {
 		Empleador empleador1 = new Empleador("fede", "123", "Federico", "22345", Constantes.SALUD, Constantes.FISICA);
-		empleador1.setPuntaje(20);
+		empleador1.setPuntaje(10);
 		Empleador empleador2 = new Empleador("baucho", "456", "Bautista", "22378", Constantes.SALUD, Constantes.FISICA);
-		empleador2.setPuntaje(10);
+		empleador2.setPuntaje(20);
 		empleadores.put("fede", empleador1);
 		empleadores.put("baucho", empleador2);
 		Cliente resultado = prueba.aplicaPromo(false, empleados, empleadores);
-		Assert.assertEquals("Deberia retornar el primer elemento del hashmap",resultado.getUsserName(), "fede");
+		Assert.assertEquals("Deberia retornar el primer elemento del hashmap",resultado.getUsserName(), "baucho");
 	}
 
 	@Test
@@ -88,7 +85,6 @@ public class TestUtilPromo {
 		empleador1.setListaDePostulantes(listaPostulantes);
 		empleadores.put("fede", empleador1);
 		Cliente resultado = prueba.aplicaPromo(true, empleados, empleadores);
-		System.out.println(resultado);
 		Assert.assertNotEquals("Deberia retornar el cliente del hashmap",null, resultado);
 	}
 	
@@ -102,7 +98,6 @@ public class TestUtilPromo {
 		empleado1.setListaDePostulantes(listaPostulantes);
 		empleados.put("santi", empleado1);
 		Cliente resultado = prueba.aplicaPromo(true, empleados, empleadores);
-		System.out.println(resultado);
 		Assert.assertNotEquals("Deberia retornar el cliente del hashmap",null, resultado);
 	}
 

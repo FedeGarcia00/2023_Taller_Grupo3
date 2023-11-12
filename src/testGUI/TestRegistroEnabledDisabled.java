@@ -1,7 +1,5 @@
 package testGUI;
 
-import static org.junit.Assert.*;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 
@@ -66,6 +64,29 @@ public class TestRegistroEnabledDisabled {
 			Assert.assertFalse("Boton de registrar deberia estar deshabilitado.", registrarAccion.isEnabled());	 
 	}
 	
+	public void testRegSoloPass() {
+		Ventana ventana = (Ventana) controlador.getVista();
+		robot.delay(TestUtils.getDelay());	
+		JRadioButton empleador = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EMPLEADOR);
+		TestUtils.clickComponent(empleador, robot);	 
+		JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_PASSWORD);
+		JButton registrarAccion = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_REGISTRAR);
+		TestUtils.clickComponent(password, robot);
+		TestUtils.tipeaTexto("123", robot);	
+		Assert.assertFalse("Boton de registrar deberia estar deshabilitado.", registrarAccion.isEnabled());
+	}
+	
+	public void testRegSoloConfPass() {
+		Ventana ventana = (Ventana) controlador.getVista();
+		robot.delay(TestUtils.getDelay());	
+		JRadioButton empleador = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EMPLEADOR);
+		TestUtils.clickComponent(empleador, robot);	 
+		JTextField confPass = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_CONFIRM_PASSWORD);
+		JButton registrarAccion = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_REGISTRAR);
+		TestUtils.clickComponent(confPass, robot);
+		TestUtils.tipeaTexto("manu", robot);	
+		Assert.assertFalse("Boton de registrar deberia estar deshabilitado.", registrarAccion.isEnabled());
+	}
 	
 	@Test
 	public void testRegEmpleadorSoloRealName() {
@@ -92,7 +113,7 @@ public class TestRegistroEnabledDisabled {
 		Assert.assertFalse("Boton de registrar deberia estar deshabilitado.", registrarAccion.isEnabled());
 	}
 	
-	// falta testear solo pass, solo confirmacionpass, combinaciones y permutaciones pero hacemos recorte
+	
 	
 	@Test
 	public void testRegEmpleadorTodoLleno() {
@@ -105,7 +126,6 @@ public class TestRegistroEnabledDisabled {
 		JTextField realname = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_REAL_NAME);
 		JTextField phone = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_TELEFONO);
 		JButton registrarAccion = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_REGISTRAR);
-		System.out.println(registrarAccion.isEnabled());
 		TestUtils.clickComponent(user, robot);
 		TestUtils.tipeaTexto("manu", robot);
 		TestUtils.clickComponent(password, robot);
@@ -117,7 +137,6 @@ public class TestRegistroEnabledDisabled {
 		TestUtils.clickComponent(phone, robot);
 		TestUtils.tipeaTexto("5422354", robot);
 		TestUtils.clickComponent(empleador, robot);
-		System.out.println(registrarAccion.isEnabled());
 		Assert.assertTrue("Boton de registrar deberia estar habilitado.", registrarAccion.isEnabled());
 	}
 	

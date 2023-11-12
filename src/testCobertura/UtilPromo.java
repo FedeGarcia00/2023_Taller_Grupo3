@@ -57,7 +57,6 @@ public class UtilPromo
 			contadorEmpleador = empleadores.size();
 			contadorEmpleadoPretenso = empleados.size();
 		}
-
 		if (contadorEmpleador > contadorEmpleadoPretenso)
 			clientes = empleadores.values().iterator();
 		else
@@ -75,5 +74,4 @@ public class UtilPromo
 		}
 		return clienteBeneficiado;
 	}
-
 }
