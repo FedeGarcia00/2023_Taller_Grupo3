@@ -90,11 +90,11 @@ public class TestPersistencia {
 			
 			 //Comparacion de los datos de UNO solo
 			 EmpleadoPretenso empleado = empleados.get("fede");
-			 Assert.assertEquals("",empleado2.getPassword(), empleado.getPassword());
-			 Assert.assertEquals("",empleado2.getRealName(), empleado.getRealName());
-			 Assert.assertEquals("",empleado2.getApellido(), empleado.getApellido());
-			 Assert.assertEquals("",empleado2.getTelefono(), empleado.getTelefono());
-			 Assert.assertEquals("",empleado2.getEdad(), empleado.getEdad());
+			 Assert.assertEquals("No coincide password",empleado2.getPassword(), empleado.getPassword());
+			 Assert.assertEquals("No coincide realname",empleado2.getRealName(), empleado.getRealName());
+			 Assert.assertEquals("No coincide Apellido",empleado2.getApellido(), empleado.getApellido());
+			 Assert.assertEquals("No coincide telefono",empleado2.getTelefono(), empleado.getTelefono());
+			 Assert.assertEquals("No coincide edad",empleado2.getEdad(), empleado.getEdad());
 			 
 		} catch (ClassNotFoundException | IOException e) {
 			Assert.fail("No deberia entrar aqui, el deberia existir.");
@@ -111,11 +111,11 @@ public class TestPersistencia {
 			 Assert.assertEquals("Deberia haber dos empleados", empleadores.size() , 2); 
 			 //Comparacion de los datos de UNO solo
 			 Empleador empleador = empleadores.get("santi");
-			 Assert.assertEquals("",empleador1.getPassword(), empleador.getPassword());
-			 Assert.assertEquals("",empleador1.getRealName(), empleador.getRealName());
-			 Assert.assertEquals("",empleador1.getTelefono(), empleador.getTelefono());
-			 Assert.assertEquals("",empleador1.getTipoPersona(), empleador.getTipoPersona());
-			 Assert.assertEquals("",empleador1.getRubro(), empleador.getRubro());
+			 Assert.assertEquals("No coincide password",empleador1.getPassword(), empleador.getPassword());
+			 Assert.assertEquals("No coincide realname",empleador1.getRealName(), empleador.getRealName());
+			 Assert.assertEquals("No coincide telefono",empleador1.getTelefono(), empleador.getTelefono());
+			 Assert.assertEquals("No coincide tipo persona",empleador1.getTipoPersona(), empleador.getTipoPersona());
+			 Assert.assertEquals("No coincide rubro",empleador1.getRubro(), empleador.getRubro());
  
 		} catch (ClassNotFoundException | IOException e) {
 			Assert.fail("No deberia entrar aqui, el deberia existir.");
@@ -127,7 +127,7 @@ public class TestPersistencia {
 	public void testLimiteSuperior() {
 		try {
 			agencia.cargarAgencia("testPersistencia.xml");
-			 Assert.assertEquals("",limiteSuperior, agencia.getLimiteSuperior());	 
+			 Assert.assertEquals("No coincide el limite superior",limiteSuperior, agencia.getLimiteSuperior());	 
 		} catch (ClassNotFoundException | IOException e) {
 			Assert.fail("No deberia entrar aqui, el deberia existir.");
 		}
@@ -137,7 +137,7 @@ public class TestPersistencia {
 	public void testLimiteInferior() {
 		try {
 			agencia.cargarAgencia("testPersistencia.xml");
-			 Assert.assertEquals("",limiteInferior, agencia.getLimiteInferior());	 
+			 Assert.assertEquals("No coincide el limite inferior",limiteInferior, agencia.getLimiteInferior());	 
 		} catch (ClassNotFoundException | IOException e) {
 			Assert.fail("No deberia entrar aqui, el deberia existir.");
 		}
@@ -147,7 +147,7 @@ public class TestPersistencia {
 	public void testEstadoContratacion() {
 		try {
 			agencia.cargarAgencia("testPersistencia.xml");
-			 Assert.assertEquals("",Mensajes.AGENCIA_EN_CONTRATACION.getValor(), agencia.getEstado());	 
+			 Assert.assertEquals("No coincide el estado de la empresa",Mensajes.AGENCIA_EN_CONTRATACION.getValor(), agencia.getEstado());	 
 		} catch (ClassNotFoundException | IOException e) {
 			Assert.fail("No deberia entrar aqui, el deberia existir.");
 		}
