@@ -44,11 +44,11 @@ public class TestAgenciaConClientes {
 	    empleado2 = agencia.registroEmpleado("fede","345","Federico","Garcia","22321",23);
 
 	    // Se le crea un ticket a los empleadores
-	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador1);
+	    //agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador1);
 	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.SENIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador2);
 
 	    // Se le crea un ticket a los empleados
-	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado1);
+	    //agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado1);
 	    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.SENIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado2);
 
 	  }
@@ -58,20 +58,6 @@ public class TestAgenciaConClientes {
     agencia.cerrarSesion();
   }
 
-  //
-  //	@Test
-  //	public void testaplicarPromo1() {
-  //		fail("Not yet implemented");
-  //	}
-  //	@Test
-  //	public void testaplicarPromo2() {
-  //		fail("Not yet implemented");
-  //	}
-  //
-  //	@Test
-  //	public void  testcalculaPremiosCastigosAsignaciones() {
-  //		fail("Not yet implemented");
-  //	}
 
   @Test
   public void testlogin1() {

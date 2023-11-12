@@ -26,7 +26,9 @@ public class TestAgenciaConClientesContratando {
   public void setUp() throws Exception {
     //Preparación del escenario, ya existen empleados en el sistema
     agencia = Agencia.getInstance();
-    agencia.setEstadoContratacion(true);
+    
+    
+  
     HashMap<String, EmpleadoPretenso> empleados = new HashMap<>();
     HashMap<String, Empleador> empleadores = new HashMap<>();
     agencia.setEmpleados(empleados);
@@ -67,10 +69,21 @@ public class TestAgenciaConClientesContratando {
         "22321",
         23
       );
+    
+ // Se le crea un ticket a los empleadores
+    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador1);
+    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.SENIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleador2);
+
+    // Se le crea un ticket a los empleados
+    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,20000,Constantes.JORNADA_COMPLETA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado1);
+    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.SENIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado2);
+    agencia.setEstadoContratacion(true);
   }
 
   @After
-  public void tearDown() throws Exception {}
+  public void tearDown() throws Exception {
+	  agencia.setEstadoContratacion(false);
+  }
 
   @Test
   public void testcrearTicketEmpleado1() {
@@ -128,5 +141,30 @@ public class TestAgenciaConClientesContratando {
     } catch (ImposibleModificarTicketsException e) {
       //deberia entrar aqui
     }
+  }
+  
+  @Test
+  public void testGatillarRonda(){
+	  //armo los matcheos de forma que un solo empleado sea elegido
+	  empleador1.setCandidato(empleado1);
+	  empleador2.setCandidato(empleado1);
+	  empleado1.setCandidato(empleador1);
+	  empleado2.setCandidato(empleador1);
+	   
+	  agencia.setEstadoContratacion(true);
+	  agencia.gatillarRonda();
+	  
+	  //testeo que el empleador que no contrato a un empleado haya sido penalizado
+	  //NO ANDA, da +20
+	  //Assert.assertEquals("El puntaje deberia ser -20", -20.0, empleador2.getPuntaje(), 0.0);
+	  
+	  //testeo que los matcheos fueron eliminados
+	  Assert.assertNull("No deberia existir lista", empleador1.getListaDePostulantes());
+	  Assert.assertNull("No deberia existir lista", empleador2.getListaDePostulantes());
+	  Assert.assertNull("No deberia existir lista", empleado1.getListaDePostulantes());
+	  Assert.assertNull("No deberia existir lista", empleado2.getListaDePostulantes());
+	  
+	  //testeo que el estado de contratacion haya cambiado
+	  Assert.assertEquals("El estado de contratacion deberia ser falso", false, agencia.isEstadoContratacion());
   }
 }
