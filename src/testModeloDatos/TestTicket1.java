@@ -1,7 +1,5 @@
 package testModeloDatos;
 
-
-
 import java.util.HashMap;
 
 import org.junit.After;
@@ -49,7 +47,6 @@ public class TestTicket1 {
 	    	      Constantes.PRIMARIOS,
 	    	      empleador1
 	    	    );
-	    //agencia.login("pepe", "765");
 	    empleado1 =
 	    	      agencia.registroEmpleado(
 	    	        "fede",

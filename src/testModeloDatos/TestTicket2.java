@@ -509,7 +509,6 @@ public class TestTicket2 {
 	    Ticket ticket = empleador1.getTicket();
 	    Ticket otro = empleado1.getTicket();
 	    double resultado = ticket.getComparacionTotal(otro);
-	    //double esperado = ticket.getComparacionEstudios(otro)+ticket.getComparacionExperiencia(otro)+ticket.getComparacionJornada(otro)+ticket.getComparacionLocacion(otro)+ticket.getComparacionPuesto(otro)+ticket.getComparacionRemuneracion(otro);
 	    Assert.assertEquals("El resultado deberia ser:",-2, resultado, 0.1);	
 	}
 }

@@ -1,13 +1,11 @@
 package testGUI;
 
-import static org.junit.Assert.*;
 
 import java.awt.AWTException;
 import java.awt.Robot;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JCheckBox;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -15,11 +13,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import controlador.Controlador;
-import modeloDatos.Cliente;
-import modeloDatos.EmpleadoPretenso;
 import util.Constantes;
 import vista.PanelAdmin;
-import vista.PanelRegistro;
 import vista.Ventana;
 
 public class TestAdminEnabledDisabled {
@@ -41,6 +36,9 @@ public class TestAdminEnabledDisabled {
 		
 		  controlador = new Controlador();
 		  ventana = (Ventana) controlador.getVista();
+		  
+		  //con el setContentPane a veces tira excepciones y a veces no, si simulamos el login no pasa
+		  //pero no seria la manera correcta
 		  PanelAdmin panelAdmin = new PanelAdmin(controlador);
 		  ventana.setContentPane(panelAdmin);
 		 

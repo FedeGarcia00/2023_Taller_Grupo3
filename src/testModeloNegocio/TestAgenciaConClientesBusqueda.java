@@ -32,63 +32,15 @@ public class TestAgenciaConClientesBusqueda {
     HashMap<String, Empleador> empleadores = new HashMap<>();
     agencia.setEmpleados(empleados);
     agencia.setEmpleadores(empleadores);
-    empleador1 =
-      agencia.registroEmpleador(
-        "santi",
-        "456",
-        "Santiago",
-        "43234",
-        Constantes.JURIDICA,
-        Constantes.SALUD
-      );
-    empleador2 =
-      agencia.registroEmpleador(
-        "pepe",
-        "765",
-        "Pedro",
-        "21334",
-        Constantes.FISICA,
-        Constantes.SALUD
-      );
-    empleado1 =
-      agencia.registroEmpleado(
-        "baucho",
-        "123",
-        "Bautista",
-        "Orte",
-        "223543",
-        23
-      );
-    empleado2 =
-      agencia.registroEmpleado(
-        "fede",
-        "345",
-        "Federico",
-        "Garcia",
-        "22321",
-        23
-      );
+    empleador1 = agencia.registroEmpleador("santi","456","Santiago","43234",Constantes.JURIDICA,Constantes.SALUD);
+    empleador2 =agencia.registroEmpleador("pepe","765","Pedro","21334",Constantes.FISICA,Constantes.SALUD);
+    empleado1 = agencia.registroEmpleado("baucho","123","Bautista","Orte","223543",23);
+    empleado2 = agencia.registroEmpleado("fede","345","Federico","Garcia","22321",23);
 
     // Se le crea un ticket al empleado 2
-    agencia.crearTicketEmpleado(
-      Constantes.HOME_OFFICE,
-      50000,
-      Constantes.JORNADA_MEDIA,
-      Constantes.JUNIOR,
-      Constantes.EXP_MEDIA,
-      Constantes.TERCIARIOS,
-      empleado2
-    );
+    agencia.crearTicketEmpleado(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA,Constantes.TERCIARIOS,empleado2);
     // Se le crea un ticket al empleador 2
-    agencia.crearTicketEmpleador(
-      Constantes.HOME_OFFICE,
-      50000,
-      Constantes.JORNADA_MEDIA,
-      Constantes.JUNIOR,
-      Constantes.EXP_MEDIA,
-      Constantes.TERCIARIOS,
-      empleador2
-    );
+    agencia.crearTicketEmpleador(Constantes.HOME_OFFICE,50000,Constantes.JORNADA_MEDIA,Constantes.JUNIOR,Constantes.EXP_MEDIA, Constantes.TERCIARIOS,empleador2);
   }
 
   @After
@@ -99,7 +51,6 @@ public class TestAgenciaConClientesBusqueda {
 
   @Test
   public void testcrearTicketEmpleado1() {
-    //ANDA
     System.out.println(agencia.getEstado());
     try {
       agencia.crearTicketEmpleado(
@@ -112,45 +63,19 @@ public class TestAgenciaConClientesBusqueda {
         empleado1
       );
     } catch (ImposibleModificarTicketsException e) {
-      // El usuario no tiene ticket, por lo tanto no deberia tirar excepcion
       Assert.fail("No deberia tirar excepcion: " + e.getMessage());
     }
     Ticket ticketNuevo = empleado1.getTicket();
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getLocacion(),
-      Constantes.PRESENCIAL
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getRemuneracion(),
-      70000
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getJornada(),
-      Constantes.JORNADA_COMPLETA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getPuesto(),
-      Constantes.JUNIOR
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getExperiencia(),
-      Constantes.EXP_NADA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getEstudios(),
-      Constantes.SECUNDARIOS
-    );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.PRESENCIAL,ticketNuevo.getLocacion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",70000, ticketNuevo.getRemuneracion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.JORNADA_COMPLETA,ticketNuevo.getJornada());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ", Constantes.JUNIOR,ticketNuevo.getPuesto() );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.EXP_NADA,ticketNuevo.getExperiencia());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.SECUNDARIOS ,ticketNuevo.getEstudios());
   }
 
   @Test
   public void testcrearTicketEmpleado2() {
-    //ANDA...
     try {
       agencia.crearTicketEmpleado(
         Constantes.PRESENCIAL,
@@ -162,46 +87,19 @@ public class TestAgenciaConClientesBusqueda {
         empleado2
       );
     } catch (ImposibleModificarTicketsException e) {
-      // El usuario no tiene ticket, por lo tanto no deberia tirar excepcion
       Assert.fail("No deberia tirar excepcion: " + e.getMessage());
     }
     Ticket ticketNuevo = empleado2.getTicket();
-    // tienen que quedar en e
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getLocacion(),
-      Constantes.PRESENCIAL
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getRemuneracion(),
-      70000
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getJornada(),
-      Constantes.JORNADA_COMPLETA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getPuesto(),
-      Constantes.JUNIOR
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getExperiencia(),
-      Constantes.EXP_NADA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getEstudios(),
-      Constantes.SECUNDARIOS
-    );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.PRESENCIAL,ticketNuevo.getLocacion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",70000, ticketNuevo.getRemuneracion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.JORNADA_COMPLETA,ticketNuevo.getJornada());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ", Constantes.JUNIOR,ticketNuevo.getPuesto() );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.EXP_NADA,ticketNuevo.getExperiencia());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.SECUNDARIOS ,ticketNuevo.getEstudios());
   }
 
   @Test
   public void testcrearTicketEmpleador1() {
-    //ANDA
     try {
       agencia.crearTicketEmpleador(
         Constantes.PRESENCIAL,
@@ -213,45 +111,19 @@ public class TestAgenciaConClientesBusqueda {
         empleador1
       );
     } catch (ImposibleModificarTicketsException e) {
-      // El usuario no tiene ticket, por lo tanto no deberia tirar excepcion
       Assert.fail("No deberia tirar excepcion: " + e.getMessage());
     }
     Ticket ticketNuevo = empleador1.getTicket();
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getLocacion(),
-      Constantes.PRESENCIAL
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getRemuneracion(),
-      70000
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getJornada(),
-      Constantes.JORNADA_COMPLETA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getPuesto(),
-      Constantes.JUNIOR
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getExperiencia(),
-      Constantes.EXP_NADA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getEstudios(),
-      Constantes.SECUNDARIOS
-    );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.PRESENCIAL,ticketNuevo.getLocacion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",70000, ticketNuevo.getRemuneracion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.JORNADA_COMPLETA,ticketNuevo.getJornada());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.JUNIOR,ticketNuevo.getPuesto() );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.EXP_NADA,ticketNuevo.getExperiencia());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.SECUNDARIOS ,ticketNuevo.getEstudios());
   }
 
   @Test
   public void testcrearTicketEmpleador2() {
-    //ANDA...
     try {
       agencia.crearTicketEmpleado(
         Constantes.PRESENCIAL,
@@ -263,46 +135,19 @@ public class TestAgenciaConClientesBusqueda {
         empleador2
       );
     } catch (ImposibleModificarTicketsException e) {
-      // El usuario no tiene ticket, por lo tanto no deberia tirar excepcion
       Assert.fail("No deberia tirar excepcion: " + e.getMessage());
     }
     Ticket ticketNuevo = empleador2.getTicket();
-    // tienen que quedar en e
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getLocacion(),
-      Constantes.PRESENCIAL
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getRemuneracion(),
-      70000
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getJornada(),
-      Constantes.JORNADA_COMPLETA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getPuesto(),
-      Constantes.JUNIOR
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getExperiencia(),
-      Constantes.EXP_NADA
-    );
-    Assert.assertEquals(
-      "El valor del ticket no coincide con el creado: ",
-      ticketNuevo.getEstudios(),
-      Constantes.SECUNDARIOS
-    );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.PRESENCIAL,ticketNuevo.getLocacion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",70000, ticketNuevo.getRemuneracion());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.JORNADA_COMPLETA,ticketNuevo.getJornada());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.JUNIOR,ticketNuevo.getPuesto() );
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.EXP_NADA,ticketNuevo.getExperiencia());
+    Assert.assertEquals("El valor del ticket no coincide con el creado: ",Constantes.SECUNDARIOS ,ticketNuevo.getEstudios());
   }
 
   @Test
   public void testeliminarTicket1() {
-    //ANDA
     try {
       agencia.login("pepe", "765");
     } catch (ContraException | NombreUsuarioException e) {
@@ -311,16 +156,9 @@ public class TestAgenciaConClientesBusqueda {
     try {
       agencia.eliminarTicket();
     } catch (ImposibleModificarTicketsException e) {
-      Assert.fail(
-        "No deberia lanzar la excepcion, deberia eliminar ticket" +
-        e.getMessage()
-      );
+      Assert.fail("No deberia lanzar la excepcion, deberia eliminar ticket" + e.getMessage());
     }
-    Assert.assertEquals(
-      "No deberia existir ticket despues de eliminarlo",
-      null,
-      empleador2.getTicket()
-    );
+    Assert.assertEquals("No deberia existir ticket despues de eliminarlo", null,empleador2.getTicket() );
   }
   
   @Test

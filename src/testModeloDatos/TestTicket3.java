@@ -1,13 +1,10 @@
 package testModeloDatos;
 
 
-
 import java.util.HashMap;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import excepciones.ImposibleModificarTicketsException;
 import org.junit.Assert;
 import modeloDatos.Cliente;
@@ -42,7 +39,7 @@ public class TestTicket3 {
 	    	      );
 	    agencia.crearTicketEmpleador(
 	    	      Constantes.INDISTINTO,
-	    	      2000, // ver remuneracion
+	    	      2000,
 	    	      Constantes.JORNADA_EXTENDIDA,
 	    	      Constantes.MANAGMENT,
 	    	      Constantes.EXP_MUCHA,

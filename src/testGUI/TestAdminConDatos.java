@@ -93,7 +93,7 @@ public class TestAdminConDatos {
 		agencia.setEstadoContratacion(true);
 		JButton gatillar = (JButton) TestUtils.getComponentForName(ventana, Constantes.GATILLAR);
 		TestUtils.clickComponent(gatillar, robot);
-	    Assert.assertEquals("Deberia decir mensaje de agencia en contratacion:", Mensajes.AGENCIA_EN_BUSQUEDA.getValor(), op.getMensaje()); 
+	    Assert.assertEquals("Deberia decir mensaje de agencia en busqueda:", Mensajes.AGENCIA_EN_BUSQUEDA.getValor(), op.getMensaje()); 
 	}   	
 	
 	@Test

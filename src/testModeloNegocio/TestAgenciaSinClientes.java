@@ -35,22 +35,16 @@ public class TestAgenciaSinClientes {
 
   @Test
   public void testlogin1() {
-    //ANDA
     try {
       agencia.login("admin", "admin");
     } catch (ContraException | NombreUsuarioException e) {
       Assert.fail("No deberia entrar aqui, usuario y contrasena correctos");
     }
-    Assert.assertEquals(
-      "El tipo de usuario deberia ser 2",
-      2,
-      agencia.getTipoUsuario()
-    );
+    Assert.assertEquals("El tipo de usuario deberia ser 2",2,agencia.getTipoUsuario());
   }
 
   @Test
   public void testlogin2() {
-    //NO ANDA
     try {
       agencia.login("admin", "123");
       Assert.fail("Deberia haber lanzado excepcion ContraException");
@@ -63,7 +57,6 @@ public class TestAgenciaSinClientes {
 
   @Test
   public void testlogin3() {
-    //ANDA
     try {
       agencia.login("santi", "123");
       Assert.fail("Deberia haber lanzado excepcion NombreUsuarioException");
@@ -73,10 +66,24 @@ public class TestAgenciaSinClientes {
       //deberia entrar aqui
     }
   }
+  
+  @Test
+  public void testcerrarSesion() {
+    try {
+      agencia.login("admin", "admin");
+    } catch (ContraException | NombreUsuarioException e) {
+      // no deberia entrar aca, testeado en su propio metodo
+    }
+    agencia.cerrarSesion();
+    Assert.assertEquals(
+      "El tipo de usuario al cerrar sesion deberia ser -1",
+      -1,
+      agencia.getTipoUsuario()
+    );
+  }
 
   @Test
   public void testregistroEmpleado1() {
-    // no anda
     EmpleadoPretenso clienteCreado = null;
     try {
       clienteCreado =
@@ -91,16 +98,15 @@ public class TestAgenciaSinClientes {
     } catch (NewRegisterException | ImposibleCrearEmpleadoException e) {
       Assert.fail("No deberia entrar aqui");
     }
-    Assert.assertEquals("pepito", clienteCreado.getUsserName());
-    Assert.assertEquals("789", clienteCreado.getPassword());
-    Assert.assertEquals("Jose", clienteCreado.getRealName());
-    Assert.assertEquals("+5492234562170", clienteCreado.getTelefono());
-    Assert.assertEquals(45, clienteCreado.getEdad());
+    Assert.assertEquals("No coincide el username", "pepito", clienteCreado.getUsserName());
+    Assert.assertEquals("No coincide la password","789", clienteCreado.getPassword());
+    Assert.assertEquals("No coincide el realname","Jose", clienteCreado.getRealName());
+    Assert.assertEquals("No coincide el numero de telefono","+5492234562170", clienteCreado.getTelefono());
+    Assert.assertEquals("No coincide la edad",45, clienteCreado.getEdad());
   }
 
   @Test
   public void testregistroEmpleado2() {
-    //ANDA
     try {
       agencia.registroEmpleado(
         null,
@@ -115,13 +121,11 @@ public class TestAgenciaSinClientes {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
       // deberia entrar aqui
-
     }
   }
 
   @Test
   public void testregistroEmpleado3() {
-    //ANDA
     try {
       agencia.registroEmpleado(
         "pepito",
@@ -136,13 +140,11 @@ public class TestAgenciaSinClientes {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
       // deberia entrar aqui
-
     }
   }
 
   @Test
   public void testregistroEmpleado4() {
-    //ANDA
     try {
       agencia.registroEmpleado(
         "pepito",
@@ -157,13 +159,11 @@ public class TestAgenciaSinClientes {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
       // deberia entrar aqui
-
     }
   }
 
   @Test
   public void testregistroEmpleado5() {
-    //ANDA
     try {
       agencia.registroEmpleado(
         "pepito",
@@ -183,7 +183,6 @@ public class TestAgenciaSinClientes {
 
   @Test
   public void testregistroEmpleado6() {
-    //ANDA
     try {
       agencia.registroEmpleado("pepito", "789", "Jose", "Perez", null, 45);
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
@@ -196,7 +195,6 @@ public class TestAgenciaSinClientes {
 
   @Test
   public void testregistroEmpleador1() {
-    //ANDA
     Empleador clienteCreado = null;
     try {
       clienteCreado =
@@ -211,12 +209,12 @@ public class TestAgenciaSinClientes {
     } catch (NewRegisterException | ImposibleCrearEmpleadorException e) {
       e.printStackTrace();
     }
-    Assert.assertEquals("pepito", clienteCreado.getUsserName());
-    Assert.assertEquals("789", clienteCreado.getPassword());
-    Assert.assertEquals("Jose", clienteCreado.getRealName());
-    Assert.assertEquals("+5492234562170", clienteCreado.getTelefono());
-    Assert.assertEquals(Constantes.FISICA, clienteCreado.getTipoPersona());
-    Assert.assertEquals(Constantes.SALUD, clienteCreado.getRubro());
+    Assert.assertEquals("No coincide el username","pepito", clienteCreado.getUsserName());
+    Assert.assertEquals("No coincide la password","789", clienteCreado.getPassword());
+    Assert.assertEquals("No coincide el realname","Jose", clienteCreado.getRealName());
+    Assert.assertEquals("No coincide el telefono", "+5492234562170", clienteCreado.getTelefono());
+    Assert.assertEquals("No coincide el tipo de persona", Constantes.FISICA, clienteCreado.getTipoPersona());
+    Assert.assertEquals("No coincide el rubro",Constantes.SALUD, clienteCreado.getRubro());
   }
 
   @Test

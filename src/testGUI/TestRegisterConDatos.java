@@ -1,6 +1,5 @@
 package testGUI;
 
-import static org.junit.Assert.*;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -21,7 +20,6 @@ import modeloDatos.Empleador;
 import modeloNegocio.Agencia;
 import util.Constantes;
 import util.Mensajes;
-import vista.PanelRegistro;
 import vista.Ventana;
 
 public class TestRegisterConDatos {
@@ -30,11 +28,7 @@ public class TestRegisterConDatos {
 	Robot robot; 
 	FalsoOptionPane op = new FalsoOptionPane();
 	Agencia agencia;
-	 Ventana ventana;
-	
-	//Robot robot;
-	
-	// constructor para alltest
+	Ventana ventana;
 	
 	public TestRegisterConDatos() {
 		try {
@@ -46,18 +40,10 @@ public class TestRegisterConDatos {
 	
 	@Before
 	public void setUp() throws Exception {
+			
 		
-//		 robot.delay(TestUtils.getDelay());
-//		  controlador = new Controlador();
-//		  ventana = (Ventana) controlador.getVista();
-//		  PanelRegistro panelRegistro = new PanelRegistro(controlador);
-//		  ventana.setContentPane(panelRegistro);
-		
-		
-		  robot.delay(TestUtils.getDelay());
-		  
-		  controlador = new Controlador();
-		  
+		  robot.delay(TestUtils.getDelay());	  
+		  controlador = new Controlador();	  
 		  ventana = (Ventana) controlador.getVista();
 		  
 //		  esto no me anda, seria la forma correcta de hacerlo, lo fuerzo con boton de registro
@@ -68,8 +54,7 @@ public class TestRegisterConDatos {
 		  //fuerzo ir a la ventana de registro
 		  JButton registrar = (JButton) TestUtils.getComponentForName(ventana, Constantes.REGISTRAR);
 		  TestUtils.clickComponent(registrar, robot);
-		  controlador.setMyOptionPane(op);
-		
+		  controlador.setMyOptionPane(op);	
 		
 		  agencia = Agencia.getInstance();  
 		  HashMap<String, EmpleadoPretenso> empleados = new HashMap<String, EmpleadoPretenso>();
@@ -87,17 +72,9 @@ public class TestRegisterConDatos {
 		 ventana.setVisible(false);
 	}
 
-	//registro empleado contrasenia no coinciden
-	//test registro empleado valido
-	//test registro empleado existente
-	//test registro empleador valido
-	//test registro empleador existente
-	// test registro empleado con algun parametro null
-	//test boton cancelar vuelve al panel login
-	
+
 	@Test
 	public void testRegContrasNoCoincidenEmpleador() {
-		//probar lo mismo con empleado
 		JRadioButton empleador = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EMPLEADOR);	
 		TestUtils.clickComponent(empleador, robot); 
 		JTextField user = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_USSER_NAME);
@@ -118,12 +95,41 @@ public class TestRegisterConDatos {
 		TestUtils.tipeaTexto("5422354", robot);
 		TestUtils.clickComponent(empleador, robot);
 		TestUtils.clickComponent(registrarAccion, robot);
-		
-//	        System.out.println(Mensajes.PASS_ERRONEO.getValor());
-//	        System.out.println(op.getMensaje());
-	        Assert.assertEquals("Deberia decir mensaje de pass erroneo:",Mensajes.PASS_ERRONEO.getValor(), op.getMensaje());
+	    Assert.assertEquals("Deberia decir mensaje contrasenas no coinciden:",Mensajes.PASS_ERRONEO.getValor(), op.getMensaje());
 
-	}      
+	}    
+	
+	@Test
+	public void testRegContrasNoCoincidenEmpleado() {
+		JRadioButton empleador = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EMPLEADO);	
+		TestUtils.clickComponent(empleador, robot); 
+		JTextField user = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_USSER_NAME);
+		JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_PASSWORD);
+		JTextField passwordConf = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_CONFIRM_PASSWORD);
+		JTextField realname = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_REAL_NAME);
+		JTextField phone = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_TELEFONO);
+		JTextField apellido = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_APELLIDO);
+		JTextField edad = (JTextField) TestUtils.getComponentForName(ventana, Constantes.REG_EDAD);
+		JButton registrarAccion = (JButton) TestUtils.getComponentForName(ventana, Constantes.REG_BUTTON_REGISTRAR);
+		TestUtils.clickComponent(user, robot);
+		TestUtils.tipeaTexto("manu", robot);
+		TestUtils.clickComponent(password, robot);
+		TestUtils.tipeaTexto("123", robot);
+		TestUtils.clickComponent(passwordConf, robot);
+		TestUtils.tipeaTexto("45678", robot);
+		TestUtils.clickComponent(realname, robot);
+		TestUtils.tipeaTexto("Emanuel", robot);
+		TestUtils.clickComponent(phone, robot);
+		TestUtils.tipeaTexto("5422354", robot);
+		TestUtils.clickComponent(apellido, robot);
+		TestUtils.tipeaTexto("Messi", robot);
+		TestUtils.clickComponent(edad, robot);
+		TestUtils.tipeaTexto("20", robot);
+		TestUtils.clickComponent(empleador, robot);
+		TestUtils.clickComponent(registrarAccion, robot);
+	    Assert.assertEquals("Deberia decir mensaje contrasenas no coinciden:",Mensajes.PASS_ERRONEO.getValor(), op.getMensaje());
+
+	}    
 	
 	
 	@Test
@@ -211,7 +217,7 @@ public class TestRegisterConDatos {
 		TestUtils.clickComponent(edad, robot);
 		TestUtils.tipeaTexto("23", robot);
 		TestUtils.clickComponent(registrarAccion, robot);
-		Assert.assertEquals("Deberia decir mensaje de pass erroneo:",Mensajes.USUARIO_REPETIDO.getValor(), op.getMensaje());	
+		Assert.assertEquals("Deberia decir mensaje de usuario repetido:",Mensajes.USUARIO_REPETIDO.getValor(), op.getMensaje());	
 	} 
 	
 	@Test
@@ -235,9 +241,8 @@ public class TestRegisterConDatos {
 		TestUtils.clickComponent(phone, robot);
 		TestUtils.tipeaTexto("43234", robot);
 		TestUtils.clickComponent(registrarAccion, robot);
-		Assert.assertEquals("Deberia decir mensaje de pass erroneo:",Mensajes.USUARIO_REPETIDO.getValor(), op.getMensaje());	
+		Assert.assertEquals("Deberia decir mensaje de usuario repetido:",Mensajes.USUARIO_REPETIDO.getValor(), op.getMensaje());	
 	}     
-	
 	
 	
 	}   

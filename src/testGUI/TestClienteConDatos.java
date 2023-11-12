@@ -1,6 +1,6 @@
 package testGUI;
 
-import static org.junit.Assert.*;
+
 import static org.mockito.Mockito.*;
 
 import java.awt.AWTException;
@@ -13,23 +13,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controlador.Controlador;
-import excepciones.ContraException;
-import excepciones.NombreUsuarioException;
 import modeloDatos.EmpleadoPretenso;
 import modeloDatos.Empleador;
-import modeloDatos.Cliente;
 import modeloNegocio.Agencia;
 import util.Constantes;
 import util.Mensajes;
-import vista.IVista;
-import vista.PanelAdmin;
-import vista.PanelCliente;
-import vista.PanelRegistro;
 import vista.Ventana;
 
 public class TestClienteConDatos {
@@ -97,9 +89,8 @@ public class TestClienteConDatos {
 		
 		EmpleadoPretenso candidato = new EmpleadoPretenso("Lio", "123", "Lionel", "+5492223141", "Messi", 36);
         when(vistaMock.getCandidato()).thenReturn(candidato);
-		
         controlador.setVista(vistaMock);
-        
+
 	    JButton seleccionarCandidato = (JButton) TestUtils.getComponentForName(ventana, Constantes.SELECCIONAR_CANDIDATO);
 	    TestUtils.clickComponent(seleccionarCandidato, robot);  
 	 

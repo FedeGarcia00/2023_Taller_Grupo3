@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 public class TestUtils
 
 {
-    private static int delay = 25;
+    private static int delay = 50;
 
     /**
      * @param delay atributo estatico que indica la cantidad de milisegundos de espera que usara el Robot.

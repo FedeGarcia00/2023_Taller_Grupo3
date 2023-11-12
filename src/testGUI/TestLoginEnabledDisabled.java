@@ -1,6 +1,5 @@
 package testGUI;
 
-import static org.junit.Assert.*;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -11,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import controlador.Controlador;
@@ -25,7 +23,6 @@ public class TestLoginEnabledDisabled {
 	
 	//Robot robot;
 	
-	// constructor para alltest
 	
 	public TestLoginEnabledDisabled() {
 		try {
@@ -114,7 +111,6 @@ public class TestLoginEnabledDisabled {
 	        TestUtils.tipeaTexto("goat", robot);
 	        
 	        Assert.assertTrue("Boton de login deberia estar habilitado", login.isEnabled()); 
-	        //test de que pasa al clickear login?
 	}
 	
 	public void testBotonRegistro() {
@@ -124,8 +120,6 @@ public class TestLoginEnabledDisabled {
 		  JButton registro = (JButton) TestUtils.getComponentForName(ventana, Constantes.REGISTRAR);
 		  Assert.assertTrue("Boton de registrar deberia estar siempre habilitado", registro.isEnabled()); 
 	}
-	
-	//test de que pasa al clickear registro?
-	
+		
 
 }

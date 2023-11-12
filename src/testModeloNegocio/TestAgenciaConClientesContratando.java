@@ -97,9 +97,7 @@ public class TestAgenciaConClientesContratando {
         Constantes.SECUNDARIOS,
         empleado1
       );
-      Assert.fail(
-        "Deberia lanzar excepcion ImposibleModificarTicketsException"
-      );
+      Assert.fail( "Deberia lanzar excepcion ImposibleModificarTicketsException" );
     } catch (ImposibleModificarTicketsException e) {
       //deberia entrar aqui
     }
@@ -135,9 +133,7 @@ public class TestAgenciaConClientesContratando {
     }
     try {
       agencia.eliminarTicket();
-      Assert.fail(
-        "Deberia lanzar excepcion ImposibleModificarTicketsException"
-      );
+      Assert.fail( "Deberia lanzar excepcion ImposibleModificarTicketsException");
     } catch (ImposibleModificarTicketsException e) {
       //deberia entrar aqui
     }

@@ -61,53 +61,36 @@ public class TestAgenciaConClientes {
 
   @Test
   public void testlogin1() {
-    //NO ANDA
     try {
       agencia.login("baucho", "123");
     } catch (ContraException | NombreUsuarioException e) {
-      //sacar multicatch y ver que excepcion tira
       Assert.fail("No deberia entrar aqui, usuario y contrasena correctos");
     }
-    Assert.assertEquals(
-      "El tipo de usuario deberia ser 0",
-      0,
-      agencia.getTipoUsuario()
-    );
+    Assert.assertEquals("El tipo de usuario deberia ser 0",0,agencia.getTipoUsuario());
   }
 
   @Test
   public void testlogin2() {
-    //ANDA
     try {
       agencia.login("santi", "456");
     } catch (ContraException | NombreUsuarioException e) {
       Assert.fail("No deberia entrar aqui, usuario y contrasena correctos");
     }
-    Assert.assertEquals(
-      "El tipo de usuario deberia ser 1",
-      1,
-      agencia.getTipoUsuario()
-    );
+    Assert.assertEquals( "El tipo de usuario deberia ser 1",1,agencia.getTipoUsuario() );
   }
 
   @Test
   public void testlogin3() {
-    //ANDA
     try {
       agencia.login("admin", "admin");
     } catch (ContraException | NombreUsuarioException e) {
       Assert.fail("No deberia entrar aqui, usuario y contrasena correctos");
     }
-    Assert.assertEquals(
-      "El tipo de usuario deberia ser 2",
-      2,
-      agencia.getTipoUsuario()
-    );
+    Assert.assertEquals( "El tipo de usuario deberia ser 2",2, agencia.getTipoUsuario() );
   }
 
   @Test
   public void testlogin4() {
-    //NO ANDA
     try {
       agencia.login("baucho", "789");
       Assert.fail("Deberia haber tirado excepcion ContraException");
@@ -120,14 +103,11 @@ public class TestAgenciaConClientes {
 
   @Test
   public void testlogin5() {
-    //ANDA PERO SI PONGO EL ASSERT.FAIL AL FINAL NO ANDA
     try {
-      agencia.login("mati", "789");
+      agencia.login("mati", "123");
       Assert.fail("Deberia haber tirado excepcion NombreUsuarioException");
     } catch (ContraException e) {
-      Assert.fail(
-        "No deberia entrar aqui, deberia entrar en excepcion NombreUsuarioException "
-      );
+      Assert.fail( "No deberia entrar aqui, deberia entrar en excepcion NombreUsuarioException" );
     } catch (NombreUsuarioException e) {
       // deberia entrar aqui, no existe un usuario con ese username;
     }
@@ -135,8 +115,6 @@ public class TestAgenciaConClientes {
 
   @Test
   public void testcerrarSesion() {
-    // ANDA
-    // para testear el cierre de sesion hacemos un login, que ya tiene su propio test
     try {
       agencia.login("fede", "345");
     } catch (ContraException | NombreUsuarioException e) {
@@ -152,7 +130,6 @@ public class TestAgenciaConClientes {
 
   @Test
   public void testregistroEmpleado1() {
-    //NO ANDA
     EmpleadoPretenso clienteCreado = null;
     try {
       clienteCreado =
@@ -167,16 +144,15 @@ public class TestAgenciaConClientes {
     } catch (NewRegisterException | ImposibleCrearEmpleadoException e) {
       Assert.fail("No deberia entrar aqui");
     }
-    Assert.assertEquals("pepito", clienteCreado.getUsserName());
-    Assert.assertEquals("789", clienteCreado.getPassword());
-    Assert.assertEquals("Jose", clienteCreado.getRealName());
-    Assert.assertEquals("+5492234562170", clienteCreado.getTelefono());
-    Assert.assertEquals(45, clienteCreado.getEdad());
+    Assert.assertEquals("No coincide el username", "pepito", clienteCreado.getUsserName());
+    Assert.assertEquals("No coincide la password","789", clienteCreado.getPassword());
+    Assert.assertEquals("No coincide el realname","Jose", clienteCreado.getRealName());
+    Assert.assertEquals("No coincide el numero de telefono","+5492234562170", clienteCreado.getTelefono());
+    Assert.assertEquals("No coincide la edad",45, clienteCreado.getEdad());
   }
 
   @Test
   public void testregistroEmpleado2() {
-    //ANDA PERO SI PONGO EL ASSERT.FAIL AL FINAL NO ANDA
     try {
       agencia.registroEmpleado(
         "fede",
@@ -197,7 +173,6 @@ public class TestAgenciaConClientes {
 
   @Test
   public void testregistroEmpleado3() {
-    //ANDA
     try {
       agencia.registroEmpleado(
         null,
@@ -212,13 +187,11 @@ public class TestAgenciaConClientes {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
       // deberia entrar aqui
-
     }
   }
 
   @Test
   public void testregistroEmpleado4() {
-    //ANDA PERO SI PONGO EL ASSERT.FAIL AL FINAL NO ANDA
     try {
       agencia.registroEmpleado(
         "pepito",
@@ -233,14 +206,11 @@ public class TestAgenciaConClientes {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
       // deberia entrar aqui
-
     }
-    //Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
   }
 
   @Test
   public void testregistroEmpleado5() {
-    //ANDA PERO SI PONGO EL ASSERT.FAIL AL FINAL NO ANDA
     try {
       agencia.registroEmpleado(
         "pepito",
@@ -255,14 +225,11 @@ public class TestAgenciaConClientes {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
       // deberia entrar aqui
-
     }
-    //Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
   }
 
   @Test
   public void testregistroEmpleado6() {
-    //ANDA PERO SI PONGO EL ASSERT.FAIL AL FINAL NO ANDA
     try {
       agencia.registroEmpleado(
         "pepito",
@@ -277,29 +244,22 @@ public class TestAgenciaConClientes {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
       // deberia entrar aqui
-
     }
-    //Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
   }
 
   @Test
   public void testregistroEmpleado7() {
-    //ANDA PERO SI PONGO EL ASSERT.FAIL AL FINAL NO ANDA
     try {
       agencia.registroEmpleado("pepito", "789", "Jose", "Perez", null, 45);
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (NewRegisterException e) {
       Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
     } catch (ImposibleCrearEmpleadoException e) {
-      // deberia entrar aqui
-
     }
-    //Assert.fail("Deberia haber tirado ImposibleCrearEmpleadoException");
   }
 
   @Test
   public void testregistroEmpleador1() {
-    //ANDA
     Empleador clienteCreado = null;
     try {
       clienteCreado =
@@ -314,17 +274,16 @@ public class TestAgenciaConClientes {
     } catch (NewRegisterException | ImposibleCrearEmpleadorException e) {
     	Assert.fail("No debería entrar aca");
     }
-    Assert.assertEquals("pepito", clienteCreado.getUsserName());
-    Assert.assertEquals("789", clienteCreado.getPassword());
-    Assert.assertEquals("Jose", clienteCreado.getRealName());
-    Assert.assertEquals("+5492234562170", clienteCreado.getTelefono());
-    Assert.assertEquals(Constantes.FISICA, clienteCreado.getTipoPersona());
-    Assert.assertEquals(Constantes.SALUD, clienteCreado.getRubro());
+    Assert.assertEquals("No coincide el username","pepito", clienteCreado.getUsserName());
+    Assert.assertEquals("No coincide la password","789", clienteCreado.getPassword());
+    Assert.assertEquals("No coincide el realname","Jose", clienteCreado.getRealName());
+    Assert.assertEquals("No coincide el telefono", "+5492234562170", clienteCreado.getTelefono());
+    Assert.assertEquals("No coincide el tipo de persona", Constantes.FISICA, clienteCreado.getTipoPersona());
+    Assert.assertEquals("No coincide el rubro",Constantes.SALUD, clienteCreado.getRubro());
   }
 
   @Test
   public void testregistroEmpleador2() {
-    // no anda
     System.out.println(agencia.getEmpleadores());
     try {
       agencia.registroEmpleador(
@@ -472,7 +431,6 @@ public class TestAgenciaConClientes {
 
   @Test
   public void testsetLimitesRemuneracion2() {
-    // NO ANDA
     try {
       agencia.setLimitesRemuneracion(6000, 2000);
       Assert.fail("Deberia lanzar LimiteSuperiorRemuneracionInvalidaException");
@@ -485,19 +443,10 @@ public class TestAgenciaConClientes {
 
   @Test
   public void testsetLimitesRemuneracion3() {
-    // ANDA
     try {
       agencia.setLimitesRemuneracion(2000, 6000);
-      Assert.assertEquals(
-        "No se establecio bien el limite inferior",
-        agencia.getLimiteInferior(),
-        2000
-      );
-      Assert.assertEquals(
-        "No se establecio bien el limite superior",
-        agencia.getLimiteSuperior(),
-        6000
-      );
+      Assert.assertEquals("No se establecio bien el limite inferior",2000, agencia.getLimiteInferior());
+      Assert.assertEquals("No se establecio bien el limite superior",6000,agencia.getLimiteSuperior());
     } catch (LimiteSuperiorRemuneracionInvalidaException e) {
       //no deberia lanzar excepcion
     } catch (LimiteInferiorRemuneracionInvalidaException e) {
@@ -532,58 +481,6 @@ public class TestAgenciaConClientes {
       Assert.assertEquals("La remuneracion deberia matchear",empleador2.calculaComision(ticketaux),agencia.getComisionUsuario(empleador2), 0.1);
       Assert.assertEquals("La remuneracion deberia matchear",empleado2.calculaComision(ticketaux),agencia.getComisionUsuario(empleado2), 0.1);
   }
-  /*
-  //test de gatiilar ronda con EstadoContratacion true
-  @Test
-  public void testGatillarRondaE1(){
-	  //armo los matcheos de forma que un solo empleado sea elegido
-	  empleador1.setCandidato(empleado1);
-	  empleador2.setCandidato(empleado1);
-	  empleado1.setCandidato(empleador1);
-	  empleado2.setCandidato(empleador1);
-	   
-	  agencia.setEstadoContratacion(true);
-	  agencia.gatillarRonda();
-	  
-	  //testeo que el empleador que no contrato a un empleado haya sido penalizado
-	  //NO ANDA, da +20
-	  //Assert.assertEquals("El puntaje deberia ser -20", -20.0, empleador2.getPuntaje(), 0.0);
-	  
-	  //testeo que los matcheos fueron eliminados
-	  Assert.assertNull("No deberia existir lista", empleador1.getListaDePostulantes());
-	  Assert.assertNull("No deberia existir lista", empleador2.getListaDePostulantes());
-	  Assert.assertNull("No deberia existir lista", empleado1.getListaDePostulantes());
-	  Assert.assertNull("No deberia existir lista", empleado2.getListaDePostulantes());
-	  
-	  //testeo que el estado de contratacion haya cambiado
-	  Assert.assertEquals("El estado de contratacion deberia ser falso", false, agencia.isEstadoContratacion());
-  }
   
-  //test de gatiilar ronda con EstadoContratacion false
-  @Test
-  public void testGatillarRondaE2(){
-	  agencia.setEstadoContratacion(false);
-	  agencia.gatillarRonda();
-	  
-	  //testeo que se hayan creado las listas de postulantes
-	  Assert.assertEquals("El usuario tiene q coincidir", "baucho", empleador1.getListaDePostulantes().get(0).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "fede", empleador1.getListaDePostulantes().get(1).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "fede", empleador2.getListaDePostulantes().get(0).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "baucho", empleador2.getListaDePostulantes().get(1).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "santi", empleado1.getListaDePostulantes().get(0).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "pepe", empleado1.getListaDePostulantes().get(1).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "pepe", empleado2.getListaDePostulantes().get(0).getCliente().getUsserName());
-	  Assert.assertEquals("El usuario tiene q coincidir", "santi", empleado2.getListaDePostulantes().get(1).getCliente().getUsserName());
-	  
-	  //testeo que se hayan aplicado los puntajes
-	  Assert.assertEquals("El puntaje debe coincidir", 10.0, empleador1.getPuntaje(), 0.0);
-	  Assert.assertEquals("El puntaje debe coincidir", 10.0, empleador2.getPuntaje(), 0.0);
-	  Assert.assertEquals("El puntaje debe coincidir", 0.0, empleado1.getPuntaje(), 0.0);
-	  Assert.assertEquals("El puntaje debe coincidir", 5.0, empleado2.getPuntaje(), 0.0);
-	  
-	  //testeo que el estado de contratacion haya cambiado
-	  Assert.assertEquals("El estado de contratacion deberia ser true", true, agencia.isEstadoContratacion());
-  }
-  */
 }
 

@@ -1,7 +1,5 @@
-//COMO ENTRO AL PANEL CLIENTE SIN INICIAR SESION
 package testGUI;
 
-import static org.junit.Assert.*;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -17,13 +15,9 @@ import javax.swing.JTextField;
 
 import modeloDatos.Cliente;
 import modeloDatos.EmpleadoPretenso;
-//import modeloDatos.EmpleadoPretenso;
-import modeloDatos.Empleador;
 import controlador.Controlador;
 import util.Constantes;
 import vista.Ventana;
-import vista.IVista;
-import vista.PanelAdmin;
 import vista.PanelCliente;
 
 public class TestClienteEnabledDisabled {
@@ -32,7 +26,6 @@ public class TestClienteEnabledDisabled {
 	Robot robot; 
 	Ventana ventana;
 	//Robot robot;
-	
 	
 	
 	public TestClienteEnabledDisabled() {
@@ -47,22 +40,7 @@ public class TestClienteEnabledDisabled {
 	public void setUp() throws Exception {
 		  controlador = new Controlador();
 		  ventana = (Ventana) controlador.getVista(); 
-		  
-		  
-		//fuerzo ir a la ventana de cliente porque el setContentPane me da problemas
-//		  JTextField username = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
-//		  JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
-//		  JButton login = (JButton) TestUtils.getComponentForName(ventana, Constantes.LOGIN);
-//	       
-//		  TestUtils.clickComponent(username, robot);
-//	      TestUtils.tipeaTexto("admin", robot);
-//	      
-//	      TestUtils.clickComponent(password, robot);
-//	      TestUtils.tipeaTexto("admin", robot);
-//	
-//	      TestUtils.clickComponent(login, robot);
-		
-		 
+		  		 
 		  //Obtengo una vista del empleado
 		  Cliente empleador = new EmpleadoPretenso("Lio", "123", "Lionel", "549223", "Messi", 35);
 		  PanelCliente panelCliente = new PanelCliente(empleador, controlador, 0, empleador);
@@ -83,6 +61,7 @@ public class TestClienteEnabledDisabled {
 		
 		JButton nuevoTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.NUEVOTICKET);
 		TestUtils.clickComponent(nuevoTicket, robot);
+		//robot.delay(TestUtils.getDelay());	
 		Assert.assertFalse("El boton deberia quedar deshabilitado:", nuevoTicket.isEnabled());	
 	}
 	

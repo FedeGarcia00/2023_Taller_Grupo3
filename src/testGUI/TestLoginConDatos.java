@@ -1,6 +1,5 @@
 package testGUI;
 
-import static org.junit.Assert.*;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -12,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import controlador.Controlador;
@@ -29,11 +27,7 @@ public class TestLoginConDatos {
 	Robot robot; 
 	FalsoOptionPane op = new FalsoOptionPane();
 	Agencia agencia;
-	
-	//Robot robot;
-	
-	// constructor para alltest
-	
+
 	public TestLoginConDatos() {
 		try {
 			robot = new Robot();
@@ -100,7 +94,7 @@ public class TestLoginConDatos {
 	        TestUtils.clickComponent(login, robot);
 //	        System.out.println(Mensajes.PASS_ERRONEO.getValor());
 	       // System.out.println(op.getMensaje());
-	        Assert.assertEquals("Deberia decir mensaje de pass erroneo:",Mensajes.USUARIO_DESCONOCIDO.getValor(), op.getMensaje());
+	        Assert.assertEquals("Deberia decir mensaje de user invalido:",Mensajes.USUARIO_DESCONOCIDO.getValor(), op.getMensaje());
 
 	}   
 	
@@ -126,70 +120,24 @@ public class TestLoginConDatos {
 
 	}   
 	
-//	@Test
-//	public void testLogUserInvalido() {
-//		 //referencia a ventana
-//		  Ventana ventana = (Ventana) controlador.getVista();
-//		  robot.delay(TestUtils.getDelay());
-// 	
-//			JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
-//			JButton login = (JButton) TestUtils.getComponentForName(ventana, Constantes.LOGIN);
-//		
-//	        TestUtils.clickComponent(password, robot);
-//	        TestUtils.tipeaTexto("messi", robot);
-//	        
-//	        Assert.assertFalse("Boton de login deberia estar deshabilitado", login.isEnabled()); 
-//	}
-//	
-//	@Test
-//	public void testLogCorrecto() {
-//		 //referencia a ventana
-//		  Ventana ventana = (Ventana) controlador.getVista();
-//		  robot.delay(TestUtils.getDelay());
-//		  
-//		    JTextField username = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
-//			JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
-//			JButton login = (JButton) TestUtils.getComponentForName(ventana, Constantes.LOGIN);
-//		
-//	        TestUtils.clickComponent(username, robot);
-//	        TestUtils.tipeaTexto("messi", robot);
-//	        
-//	        TestUtils.clickComponent(password, robot);
-//	        TestUtils.tipeaTexto("goat", robot);
-//	        
-//	        Assert.assertTrue("Boton de login deberia estar habilitado", login.isEnabled()); 
-//	}
-//	
-//	@Test
-//	public void testLogDatosCorrectos() {
-//		 // al apretar el boton login no deberia mostrar ningun modal
-//		 //referencia a ventana
-//		  Ventana ventana = (Ventana) controlador.getVista();
-//		  robot.delay(TestUtils.getDelay());
-//		  
-//		    JTextField username = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
-//			JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
-//			JButton login = (JButton) TestUtils.getComponentForName(ventana, Constantes.LOGIN);
-//		
-//	        TestUtils.clickComponent(username, robot);
-//	        TestUtils.tipeaTexto("messi", robot);
-//	        
-//	        TestUtils.clickComponent(password, robot);
-//	        TestUtils.tipeaTexto("goat", robot);
-//	        
-//	        Assert.assertTrue("Boton de login deberia estar habilitado", login.isEnabled()); 
-//	        //test de que pasa al clickear login?
-//	}
-//	
-//	public void testBotonRegistro() {
-//		//el boton registro tiene que estar siempre habilitado y debe pasar al panel registro
-//		  Ventana ventana = (Ventana) controlador.getVista();
-//		  robot.delay(TestUtils.getDelay());
-//		  JButton registro = (JButton) TestUtils.getComponentForName(ventana, Constantes.REGISTRAR);
-//		  Assert.assertTrue("Boton de registrar deberia estar siempre habilitado", registro.isEnabled()); 
-//	}
-//	
-	//test de que pasa al clickear registro?
+	@Test
+	public void testLogIncorrectoAdmin() {
+		  Ventana ventana = (Ventana) controlador.getVista();
+		  robot.delay(TestUtils.getDelay());
+		  JTextField username = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
+		  JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
+		  JButton login = (JButton) TestUtils.getComponentForName(ventana, Constantes.LOGIN);
+	       
+		  TestUtils.clickComponent(username, robot);
+	        TestUtils.tipeaTexto("admin", robot);
+	      
+	        TestUtils.clickComponent(password, robot);
+	        TestUtils.tipeaTexto("123", robot);
 	
+	        TestUtils.clickComponent(login, robot);
+
+	        Assert.assertEquals("Deberia decir mensaje de pass erroneo:",Mensajes.PASS_ERRONEO.getValor(), op.getMensaje());
+
+	}  
 
 }

@@ -2,7 +2,6 @@ package testIntegracion;
 
 import excepciones.ContraException;
 import excepciones.ImposibleCrearEmpleadoException;
-import excepciones.ImposibleCrearEmpleadorException;
 import excepciones.ImposibleModificarTicketsException;
 import excepciones.LimiteInferiorRemuneracionInvalidaException;
 import excepciones.LimiteSuperiorRemuneracionInvalidaException;
@@ -16,7 +15,6 @@ import modeloDatos.ClientePuntaje;
 import modeloDatos.Contratacion;
 import modeloDatos.EmpleadoPretenso;
 import modeloDatos.Empleador;
-import modeloDatos.Usuario;
 import modeloNegocio.Agencia;
 import org.junit.After;
 import org.junit.Assert;
@@ -57,8 +55,6 @@ public class TestIntegracion {
   @After
   public void tearDown() throws Exception {}
 
-  // 1) El administrador se loguea, setea los limites de remuneracion,
-  // gatilla ronda y cierra sesion
 
   @Test
   public void testCaso1() {  
@@ -83,8 +79,6 @@ public class TestIntegracion {
   }
 
   
-  // 2) Un empleado se registra,se loguea,el estado de contratacion esta en false, por lo tanto crea un ticket
-  // y luego cierra sesion
   @Test
   public void testCaso2() {
 	 EmpleadoPretenso empleado = null; 
@@ -103,8 +97,7 @@ public class TestIntegracion {
 	}
   }
 
-  
-  // 3) Un empleador se loguea, el estado de contratacion esta en false, elimina un ticket y cierra sesion
+
   @Test
   public void testCaso3() {
    
@@ -127,7 +120,6 @@ public class TestIntegracion {
 	  
   }
 
-  // 4) Un empleador se loguea, el estado de contratacion esta en true, selecciona candidato y cierra sesion
   @Test
   public void testCaso4() {
 	  agencia.setEstadoContratacion(true);
@@ -146,8 +138,7 @@ public class TestIntegracion {
 		} 
   }
   
-  
-  // 5)El admin se loguea, gatilla ronda y se hacen matchs
+
   @Test
   public void testCaso5() {
 	  agencia.setEstadoContratacion(true);
