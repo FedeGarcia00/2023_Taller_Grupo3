@@ -47,10 +47,27 @@ public class TestClienteEnabledDisabled {
 	public void setUp() throws Exception {
 		  controlador = new Controlador();
 		  ventana = (Ventana) controlador.getVista(); 
-		  //Obtengo una vista del empledor
+		  
+		  
+		//fuerzo ir a la ventana de cliente porque el setContentPane me da problemas
+//		  JTextField username = (JTextField) TestUtils.getComponentForName(ventana, Constantes.NOMBRE_USUARIO);
+//		  JTextField password = (JTextField) TestUtils.getComponentForName(ventana, Constantes.PASSWORD);
+//		  JButton login = (JButton) TestUtils.getComponentForName(ventana, Constantes.LOGIN);
+//	       
+//		  TestUtils.clickComponent(username, robot);
+//	      TestUtils.tipeaTexto("admin", robot);
+//	      
+//	      TestUtils.clickComponent(password, robot);
+//	      TestUtils.tipeaTexto("admin", robot);
+//	
+//	      TestUtils.clickComponent(login, robot);
+		
+		 
+		  //Obtengo una vista del empleado
 		  Cliente empleador = new EmpleadoPretenso("Lio", "123", "Lionel", "549223", "Messi", 35);
 		  PanelCliente panelCliente = new PanelCliente(empleador, controlador, 0, empleador);
 		  ventana.setContentPane(panelCliente);	
+		  ventana = (Ventana) controlador.getVista();
 	}
 
 	@After
@@ -59,18 +76,11 @@ public class TestClienteEnabledDisabled {
 		 ventana.setVisible(false);
 	}
 
-	
-
-	public void testClickSeleccionarCandidato() {
-		//ver como testear invocacion a metodo	
-	}
-
-
-	
 	@Test
 	public void testClickCrearTicket() {
 		//al clickear crear ticket deberia quedar deshabilitado	
 		robot.delay(TestUtils.getDelay());		
+		
 		JButton nuevoTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.NUEVOTICKET);
 		TestUtils.clickComponent(nuevoTicket, robot);
 		Assert.assertFalse("El boton deberia quedar deshabilitado:", nuevoTicket.isEnabled());	
@@ -116,8 +126,7 @@ public class TestClienteEnabledDisabled {
 		Assert.assertTrue("El componente deberia estar habilitado",presencial.isEnabled());
 		Assert.assertTrue("El componente deberia estar habilitado",homeOffice.isEnabled());
 		Assert.assertTrue("El componente deberia estar habilitado",indistinto.isEnabled());
-		Assert.assertTrue("El componente deberia estar habilitado",remuneracion.isEnabled());
-		
+		Assert.assertTrue("El componente deberia estar habilitado",remuneracion.isEnabled());		
 	}
 	
 	@Test
@@ -133,9 +142,6 @@ public class TestClienteEnabledDisabled {
 		JButton confirmarNuevoTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.CONFIRMARNUEVOTICKET);
 		//robot.delay(TestUtils.getDelay());
 		Assert.assertFalse("El boton deberia seguir deshabilitado:", confirmarNuevoTicket.isEnabled());
-		
-	
-		
 	}
 	
 	@Test
@@ -166,55 +172,8 @@ public class TestClienteEnabledDisabled {
 		TestUtils.tipeaTexto("200", robot);
 		JButton confirmarNuevoTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.CONFIRMARNUEVOTICKET);
 		//robot.delay(TestUtils.getDelay());
-		System.out.println(confirmarNuevoTicket.isEnabled());
+		//System.out.println(confirmarNuevoTicket.isEnabled());
 		Assert.assertTrue("El boton deberia quedar habilitado:", confirmarNuevoTicket.isEnabled());
-	
-		
 	}
 	
-
-	
-	
-	
-
-
-	
-	public void utilsElementos() {
-//Dejo este metodo con los elementos para copiarlos y pegarlos mas rapido
-			JRadioButton jornadaMedia = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.JORNADA_MEDIA);	
-			JRadioButton jornadaCompleta = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.JORNADA_COMPLETA);
-			JRadioButton jornadaExtendida = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.JORNADA_EXTENDIDA);
-			JRadioButton expNada = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EXP_NADA);
-			JRadioButton expMedia = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EXP_MEDIA);
-			JRadioButton expMucha = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.EXP_MUCHA);
-			JRadioButton terciarios = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.TERCIARIOS);
-			JRadioButton secundarios = (JRadioButton) TestUtils.getComponentForName(ventana,Constantes.SECUNDARIOS);
-			JRadioButton primarios = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.PRIMARIOS);
-			JRadioButton junior = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.JUNIOR);
-			JRadioButton senior = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.SENIOR);
-			JRadioButton mangment = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.MANAGMENT);
-			JRadioButton presencial = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.PRESENCIAL);
-			JRadioButton homeOffice = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.HOME_OFFICE);
-			JRadioButton indistinto = (JRadioButton) TestUtils.getComponentForName(ventana, Constantes.INDISTINTO);
-
-			
-			JTextField remuneracion = (JTextField) TestUtils.getComponentForName(ventana, Constantes.TEXTFIELD_REMUNERACION);
-			
-			
-			JButton seleccionarCandidato = (JButton) TestUtils.getComponentForName(ventana, Constantes.SELECCIONAR_CANDIDATO);	
-			JButton eliminarTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.ELIMINAR_TICKET);	
-			JButton nuevoTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.NUEVOTICKET);	
-			JButton confirmarNuevoTicket = (JButton) TestUtils.getComponentForName(ventana, Constantes.CONFIRMARNUEVOTICKET);
-			JButton cerrarSesion = (JButton) TestUtils.getComponentForName(ventana, Constantes.CERRARSESION);
-			
-			TestUtils.clickComponent(nuevoTicket, robot);
-			TestUtils.clickComponent(nuevoTicket, robot);
-			TestUtils.clickComponent(nuevoTicket, robot);
-			
-			System.out.println(nuevoTicket.getText());
-			//faltarian los textarea
-		 
-	}
-	
-	
-	}
+}

@@ -112,29 +112,4 @@ public class TestAdminEnabledDisabled {
 	}
 	
 	
-//	@Test
-//	public void componentes() {
-//		JTextField textoInferior = (JTextField) TestUtils.getComponentForName(ventana, Constantes.TEXTO_INFERIOR);
-//		JTextField textoSuperior = (JTextField) TestUtils.getComponentForName(ventana, Constantes.TEXTO_SUPERIOR);
-//		
-//		
-//		JButton modificarValores = (JButton) TestUtils.getComponentForName(ventana, Constantes.MODIFICAR_VALORES);	
-//		JButton gatillar = (JButton) TestUtils.getComponentForName(ventana, Constantes.GATILLAR);	
-//		JButton aplicarPromo = (JButton) TestUtils.getComponentForName(ventana, Constantes.APLICAR_PROMO);	
-//		JButton cerrarSesion = (JButton) TestUtils.getComponentForName(ventana, Constantes.CERRARSESION);	
-//		
-//		JCheckBox listaPostulantes = (JCheckBox) TestUtils.getComponentForName(ventana, Constantes.CHECK_BOX_LISTA_POSTULANTES);
-//		
-//		System.out.println(textoInferior.getText() + textoInferior.isEnabled());
-//		System.out.println(textoSuperior.getText() + textoSuperior.isEnabled());
-//		System.out.println(modificarValores.getText() + modificarValores.isEnabled());
-//		TestUtils.clickComponent(textoInferior, robot);
-//		TestUtils.tipeaTexto("10", robot);	
-//		TestUtils.clickComponent(textoSuperior, robot);
-//		TestUtils.tipeaTexto("100", robot);	
-//		System.out.println(textoInferior.getText() + textoInferior.isEnabled());
-//		System.out.println(textoSuperior.getText() + textoSuperior.isEnabled());
-//		System.out.println(modificarValores.getText() + modificarValores.isEnabled());
-//	}
-	
 }
