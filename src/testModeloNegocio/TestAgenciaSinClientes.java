@@ -352,7 +352,6 @@ public class TestAgenciaSinClientes {
 
   @Test
   public void testsetLimitesRemuneracion1() {
-    //ANDA
     try {
       agencia.setLimitesRemuneracion(-2000, 5000);
       Assert.fail("Deberia lanzar LimiteInferiorRemuneracionInvalidaException");
@@ -365,7 +364,6 @@ public class TestAgenciaSinClientes {
 
   @Test
   public void testsetLimitesRemuneracion2() {
-    // NO ANDA
     try {
       agencia.setLimitesRemuneracion(6000, 2000);
       Assert.fail("Deberia lanzar LimiteSuperiorRemuneracionInvalidaException");
@@ -378,7 +376,6 @@ public class TestAgenciaSinClientes {
 
   @Test
   public void testsetLimitesRemuneracion3() {
-    // ANDA
     try {
       agencia.setLimitesRemuneracion(2000, 6000);
       Assert.assertEquals(
