@@ -114,7 +114,7 @@ public class TestLoginEnabledDisabled {
 	}
 	
 	public void testBotonRegistro() {
-		//el boton registro tiene que estar siempre habilitado y debe pasar al panel registro
+		//el boton registro tiene que estar siempre habilitado
 		  Ventana ventana = (Ventana) controlador.getVista();
 		  robot.delay(TestUtils.getDelay());
 		  JButton registro = (JButton) TestUtils.getComponentForName(ventana, Constantes.REGISTRAR);
